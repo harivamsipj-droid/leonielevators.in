@@ -169,7 +169,7 @@
 </head>
 <body class="text-gray-900">
 
-  <audio id="muzak-audio" loop preload="auto"><source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=bossa-nova-111023.mp3" type="audio/mpeg"></audio>
+  <audio id="muzak-audio" loop preload="auto"><source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=bossa-nova-11102.mp3" type="audio/mpeg"></audio>
   <audio id="swoosh-audio" loop preload="auto"><source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_1206dfd8d6.mp3?filename=wind-blowing-sfx-12809.mp3" type="audio/mpeg"></audio>
 
   <div id="shaft-lights" class="fixed inset-0 z-[95] pointer-events-none overflow-hidden opacity-0">
@@ -443,10 +443,10 @@
         })
 
         // Ride Time
-        .to({}, { duration: 2.0 })
+        .to({}, { duration: 1.0 })
 
         // 4. Stop movement & Switch Content
-        .to("#shaft-lights", { opacity: 0, duration: 0.3 })
+        .to("#shaft-lights", { opacity: 0, duration: 0.15 })
         .call(() => {
             muzakAudio.pause(); muzakAudio.currentTime = 0;
             swooshAudio.pause(); swooshAudio.currentTime = 0;
@@ -464,10 +464,10 @@
 
         // 5. Hide internal UI & Open Doors
         .to(dirIcon, { opacity: 0, duration: 0.2 })
-        .to(elevatorPanel, { opacity: 0, pointerEvents: "none", scale: 0.95, duration: 0.3 })
-        .to(liftCounter, { opacity: 0, duration: 0.3 }, "<")
-        .to("#door-l", { x: "-100%", duration: 1.2, ease: "power3.inOut" }, "+=0.2")
-        .to("#door-r", { x: "100%", duration: 1.2, ease: "power3.inOut" }, "<")
+        .to(elevatorPanel, { opacity: 0, pointerEvents: "none", scale: 0.95, duration: 0.15 })
+        .to(liftCounter, { opacity: 0, duration: 0.15 }, "<")
+        .to("#door-l", { x: "-100%", duration: 0.6, ease: "power3.inOut" }, "+=0.2")
+        .to("#door-r", { x: "100%", duration: 0.6, ease: "power3.inOut" }, "<")
         .call(() => { isMoving = false; });
     }
 
@@ -505,8 +505,8 @@
     });
 
     window.onload = () => {
-      gsap.to("#door-l", { x: "-100%", duration: 1.5, ease: "power4.inOut", delay: 0.5 });
-      gsap.to("#door-r", { x: "100%", duration: 1.5, ease: "power4.inOut", delay: 0.5 });
+      gsap.to("#door-l", { x: "-100%", duration: 1.0, ease: "power4.inOut", delay: 0.2 });
+      gsap.to("#door-r", { x: "100%", duration: 1.0, ease: "power4.inOut", delay: 0.2 });
       setTimeout(playDing, 1000);
     };
   </script>
