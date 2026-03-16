@@ -73,6 +73,28 @@
     body { font-family: 'Inter', sans-serif; background-color: #FFFFFF; overflow: hidden; touch-action: none; color: #1a1a1a; }
     .heading { font-family: 'Playfair Display', serif; }
 
+    /* Preloader */
+    #mobile-preloader {
+      position: fixed; inset: 0; z-index: 9999;
+      background: #F5F0EB;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    #mobile-preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+    .preloader-logo { width: 120px; margin-bottom: 2rem; }
+    .preloader-label {
+      text-transform: uppercase; letter-spacing: 0.6em; font-size: 0.55rem;
+      color: rgba(0,0,0,0.3); font-weight: 600; margin-bottom: 2rem; margin-left: 0.6em;
+    }
+    .preloader-bar {
+      width: 180px; height: 2px; background: rgba(0,0,0,0.08);
+      position: relative; overflow: hidden; border-radius: 1px;
+    }
+    .preloader-fill {
+      position: absolute; top: 0; left: 0; width: 0%; height: 100%;
+      background: #9B1B30; border-radius: 1px; transition: width 0.15s ease;
+    }
+
     .float-anim { animation: float 6s ease-in-out infinite; }
     @keyframes float {
       0%, 100% { transform: translateY(0px) rotate(0deg); }
@@ -86,11 +108,25 @@
       border: 1px solid rgba(155, 27, 48, 0.3);
       box-shadow: inset 0 0 60px rgba(0,0,0,0.08);
       position: fixed; top: 0; height: 100vh; width: 50.5vw; z-index: 100; will-change: transform;
+      overflow: hidden;
     }
-    .door-left { border-right: 2px solid #9B1B30; left: 0; transform: translateX(-100%); }
-    .door-right { border-left: 2px solid #9B1B30; right: 0; transform: translateX(100%); }
+    .door-left { border-right: 2px solid #9B1B30; left: 0; transform: translateX(0); }
+    .door-right { border-left: 2px solid #9B1B30; right: 0; transform: translateX(0); }
 
     .door-seam-glow { position: absolute; top: 0; height: 100%; width: 3px; background: #9B1B30; box-shadow: 0 0 20px #9B1B30; opacity: 0.8; }
+
+    /* Door Logo - splits in half with each door */
+    .door-logo-img {
+      position: absolute; top: 50%; width: 240px; pointer-events: none;
+      opacity: 0.9;
+      filter: drop-shadow(0 4px 12px rgba(155, 27, 48, 0.15));
+    }
+    .door-left .door-logo-img {
+      right: 0; transform: translate(50%, -50%);
+    }
+    .door-right .door-logo-img {
+      left: 0; transform: translate(-50%, -50%);
+    }
 
     /* Floor Button Base Styles */
     .floor-btn {
@@ -151,15 +187,15 @@
     .section-container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; transform-style: preserve-3d; }
 
     .shaft-light {
-      position: absolute; left: 0; width: 100%; height: 20px;
-      background: rgba(155, 27, 48, 0.15);
-      box-shadow: 0 0 40px rgba(155, 27, 48, 0.4), inset 0 0 10px rgba(155, 27, 48, 0.5);
+      position: absolute; left: 0; width: 100%; height: 30px;
+      background: rgba(155, 27, 48, 0.35);
+      box-shadow: 0 0 60px rgba(155, 27, 48, 0.6), 0 0 120px rgba(155, 27, 48, 0.3);
       will-change: transform;
     }
 
     /* Mobile Adjustments */
     @media (max-width: 768px) {
-      .door-logo-img { width: 220px; height: 220px; }
+      .door-logo-img { width: 200px; }
       #elevator-panel { left: 10px; transform: scale(0.7) translateY(-50%); }
       .led-display-container { padding: 10px 16px; gap: 12px; }
       .led-number { font-size: 3rem; }
@@ -169,10 +205,24 @@
 </head>
 <body class="text-gray-900">
 
-  <audio id="muzak-audio" loop preload="auto"><source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=bossa-nova-11102.mp3" type="audio/mpeg"></audio>
+  <!-- Preloader -->
+  <div id="mobile-preloader">
+    <img src="images/logo-center.webp" alt="LEONI" class="preloader-logo">
+    <div class="preloader-bar">
+      <div class="preloader-fill" id="preloader-fill"></div>
+    </div>
+  </div>
+
+  <!-- Floating CTA -->
+  <div class="fixed right-4 bottom-4 z-[200] flex flex-col gap-3">
+    <a href="https://wa.me/917396894340?text=Hi%2C%20I%27d%20like%20a%20quote%20for%20a%20LEONI%20elevator" class="w-12 h-12 rounded-full bg-[#25D366] flex items-center justify-center text-white text-xl shadow-lg hover:scale-110 transition-transform" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <a href="tel:+917396894340" class="w-12 h-12 rounded-full bg-[#9B1B30] flex items-center justify-center text-white text-lg shadow-lg hover:scale-110 transition-transform" aria-label="Call Us"><i class="fas fa-phone"></i></a>
+  </div>
+
+  <audio id="muzak-audio" loop preload="auto"><source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=bossa-nova-111023.mp3" type="audio/mpeg"></audio>
   <audio id="swoosh-audio" loop preload="auto"><source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_1206dfd8d6.mp3?filename=wind-blowing-sfx-12809.mp3" type="audio/mpeg"></audio>
 
-  <div id="shaft-lights" class="fixed inset-0 z-[95] pointer-events-none overflow-hidden opacity-0">
+  <div id="shaft-lights" class="fixed inset-0 z-[105] pointer-events-none overflow-hidden opacity-0">
     <div class="shaft-light"></div>
     <div class="shaft-light"></div>
     <div class="shaft-light"></div>
@@ -185,16 +235,13 @@
     </div>
   </div>
 
-  <div id="door-l" class="elevator-door door-left"><div class="door-seam-glow"></div><div class="door-logo-img"></div></div>
-  <div id="door-r" class="elevator-door door-right"><div class="door-seam-glow"></div><div class="door-logo-img"></div></div>
+  <div id="door-l" class="elevator-door door-left"><div class="door-seam-glow"></div><img src="images/logo-center.webp" alt="" class="door-logo-img"></div>
+  <div id="door-r" class="elevator-door door-right"><div class="door-seam-glow"></div><img src="images/logo-center.webp" alt="" class="door-logo-img"></div>
 
   <nav class="fixed top-0 z-[150] w-full bg-[#F5F0EB]/90 backdrop-blur-md border-b border-black/5">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
       <a href="index.html" class="flex items-center">
-        <img src="images/logo.webp" alt="LEONI Elevators" class="h-8">
-      </a>
-      <a href="https://wa.me/917396894340" class="bg-[#9B1B30] text-white text-xs md:text-sm px-4 md:px-6 py-2 md:py-3 rounded-full font-bold flex items-center gap-2 transition-transform hover:scale-105" aria-label="Get a Quote via WhatsApp">
-        <i class="fab fa-whatsapp"></i> <span class="hidden sm:inline">GET QUOTE</span><span class="sm:hidden">QUOTE</span>
+        <img id="nav-logo" src="images/logo.webp" alt="LEONI Elevators" class="h-8" style="opacity: 0;">
       </a>
     </div>
   </nav>
@@ -222,9 +269,9 @@
     <section id="f0" data-floor="0" class="active" aria-hidden="false">
       <div class="parallax-bg absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518112166137-85f9979a43dd?q=80&w=2000')] bg-cover bg-center opacity-10 grayscale scale-[1.05]" role="img" aria-label="Luxury home lift interior"></div>
       <div class="section-container relative z-10 text-center parallax-front">
-        <h1 class="heading text-6xl md:text-9xl font-black mb-4 tracking-tighter text-gray-900">LEONI</h1>
-        <div class="h-1 w-20 md:w-24 bg-[#9B1B30] mx-auto mb-6"></div>
-        <h2 class="text-lg md:text-4xl font-light tracking-[0.2em] md:tracking-[0.3em] uppercase text-[#9B1B30]">Luxury Vertical Solutions</h2>
+        <img id="floor0-logo" src="images/logo-white-bg.webp" alt="LEONI Elevators" class="w-64 md:w-96 mx-auto mb-6" style="opacity: 0;">
+        <div class="h-1 w-20 md:w-24 bg-[#9B1B30] mx-auto mb-4"></div>
+
         <p class="mt-6 text-gray-500 max-w-xl mx-auto text-sm md:text-base hidden md:block">Transforming residential and commercial spaces across Telangana & Andhra Pradesh with world-class gearless elevator technology.</p>
       </div>
     </section>
@@ -349,6 +396,8 @@
     let currentFloor = 0;
     const totalFloors = 6;
     let isMoving = false;
+    let audioUnlocked = false;
+    let appReady = false;
 
     // UI Elements
     const floorDisplay = document.getElementById('floor-display');
@@ -362,6 +411,93 @@
     const swooshAudio = document.getElementById('swoosh-audio');
     muzakAudio.volume = 0.3;
     swooshAudio.volume = 0.5;
+
+    // Shared AudioContext
+    let audioCtx = null;
+
+    // ===== PRELOADER: wait for all assets =====
+    (function initPreloader() {
+      const fill = document.getElementById('preloader-fill');
+      const preloader = document.getElementById('mobile-preloader');
+
+      // Collect all assets to track
+      const imageSrcs = [];
+      document.querySelectorAll('img[src]').forEach(img => {
+        if (img.src) imageSrcs.push(img.src);
+      });
+      // Add background images from Tailwind classes
+      document.querySelectorAll('[class*="bg-[url"]').forEach(el => {
+        const match = el.className.match(/bg-\[url\('([^']+)'\)\]/);
+        if (match) imageSrcs.push(match[1]);
+      });
+
+      const totalAssets = Math.max(imageSrcs.length, 1);
+      let loadedCount = 0;
+
+      function updateProgress() {
+        loadedCount++;
+        const pct = Math.min(Math.round((loadedCount / totalAssets) * 100), 100);
+        if (fill) fill.style.width = pct + '%';
+        if (loadedCount >= totalAssets) finishPreloader();
+      }
+
+      function finishPreloader() {
+        if (appReady) return;
+        appReady = true;
+        if (fill) fill.style.width = '100%';
+
+        setTimeout(() => {
+          preloader.classList.add('hidden');
+          // Open doors after preloader fades
+          setTimeout(() => {
+            gsap.to("#door-l", { x: "-100%", duration: 1.8, ease: "power4.inOut" });
+            gsap.to("#door-r", { x: "100%", duration: 1.8, ease: "power4.inOut",
+              onStart: () => { playDing(); },
+              onComplete: () => {
+                // After doors open on floor 0, fade in the center logo
+                gsap.to("#floor0-logo", { opacity: 1, duration: 1, ease: "power2.out" });
+              }
+            });
+          }, 300);
+        }, 600);
+      }
+
+      // Preload images
+      imageSrcs.forEach(src => {
+        const img = new Image();
+        img.onload = updateProgress;
+        img.onerror = updateProgress;
+        img.src = src;
+      });
+
+      // Fallback timeout
+      setTimeout(() => { if (!appReady) finishPreloader(); }, 5000);
+    })();
+
+    // Unlock audio — only click/touch/keydown count as user activation for autoplay
+    function unlockAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      if (!audioUnlocked) {
+        audioUnlocked = true;
+        muzakAudio.load();
+        swooshAudio.load();
+        // Play a silent buffer to fully unlock audio on iOS
+        const buf = audioCtx.createBuffer(1, 1, 22050);
+        const src = audioCtx.createBufferSource();
+        src.buffer = buf;
+        src.connect(audioCtx.destination);
+        src.start(0);
+      }
+    }
+    // Only use events that grant user activation (NOT wheel/scroll)
+    ['touchstart', 'touchend', 'click', 'keydown'].forEach(evt => {
+      window.addEventListener(evt, unlockAudio, { passive: true });
+    });
 
     // MOUSE PARALLAX EFFECT
     document.addEventListener("mousemove", (e) => {
@@ -382,7 +518,8 @@
 
     function playDing() {
       try {
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
         const oscillator = audioCtx.createOscillator();
         const gainNode = audioCtx.createGain();
         oscillator.connect(gainNode);
@@ -397,8 +534,17 @@
       } catch(e) {}
     }
 
+    function safePlay(audio) {
+      try {
+        // Ensure AudioContext is active before playing
+        if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+        audio.currentTime = 0;
+        const p = audio.play();
+        if (p && p.catch) p.catch(() => {});
+      } catch(e) {}
+    }
+
     function goToFloor(targetFloor) {
-      // STRICT BOUNDARY CHECK: Prevent -80 bug
       if (targetFloor < 0 || targetFloor > totalFloors) return;
       if (targetFloor === currentFloor && !isMoving) return;
 
@@ -414,8 +560,6 @@
       const isGoingUp = targetFloor > parseInt(floorDisplay.textContent || 0);
 
       updatePanelState(currentFloor);
-
-      // Update LED Direction Arrow class safely
       dirIcon.className = isGoingUp ? "fas fa-angle-double-up led-glow opacity-0" : "fas fa-angle-double-down led-glow opacity-0";
 
       const tl = gsap.timeline();
@@ -430,23 +574,26 @@
         .to(liftCounter, { opacity: 1, duration: 0.3 }, "<")
         .to(dirIcon, { opacity: 1, duration: 0.2 })
         .to([".parallax-bg", ".parallax-front", ".parallax-text", ".parallax-img"], { x: 0, y: 0, duration: 0.5 }, "<")
-        .call(() => { try { muzakAudio.play(); swooshAudio.play(); } catch(e) {} })
+        .call(() => { safePlay(muzakAudio); safePlay(swooshAudio); })
 
-        // 3. Movement Animation
+        // 3. Movement Animation — shaft lights OVER doors + door vibration
         .to("#shaft-lights", { opacity: 1, duration: 0.2 })
         .add(() => {
+            // Shaft lights sweep across doors
             gsap.fromTo(".shaft-light",
                { y: isGoingUp ? -100 : window.innerHeight + 100 },
-               { y: isGoingUp ? window.innerHeight + 100 : -100, duration: 0.4, repeat: 4, stagger: 0.15, ease: "none" }
+               { y: isGoingUp ? window.innerHeight + 100 : -100, duration: 0.6, repeat: 3, stagger: 0.2, ease: "none" }
             );
-            gsap.to("#elevator-shaft", { y: isGoingUp ? -15 : 15, repeat: 10, yoyo: true, duration: 0.15, ease: "sine.inOut" });
+            // Vibrate the entire viewport (doors + content) for elevator feel
+            gsap.to("body", { y: isGoingUp ? -2 : 2, repeat: 8, yoyo: true, duration: 0.2, ease: "sine.inOut" });
         })
 
         // Ride Time
-        .to({}, { duration: 1.0 })
+        .to({}, { duration: 2.0 })
 
-        // 4. Stop movement & Switch Content
-        .to("#shaft-lights", { opacity: 0, duration: 0.15 })
+        // 4. Stop — settle vibration, switch content
+        .to("body", { y: 0, duration: 0.3, ease: "power2.out" })
+        .to("#shaft-lights", { opacity: 0, duration: 0.3 }, "<")
         .call(() => {
             muzakAudio.pause(); muzakAudio.currentTime = 0;
             swooshAudio.pause(); swooshAudio.currentTime = 0;
@@ -462,16 +609,25 @@
             floorDisplay.textContent = currentFloor.toString();
         })
 
-        // 5. Hide internal UI & Open Doors
+        // 5. Hide UI & Open Doors
         .to(dirIcon, { opacity: 0, duration: 0.2 })
-        .to(elevatorPanel, { opacity: 0, pointerEvents: "none", scale: 0.95, duration: 0.15 })
-        .to(liftCounter, { opacity: 0, duration: 0.15 }, "<")
-        .to("#door-l", { x: "-100%", duration: 0.6, ease: "power3.inOut" }, "+=0.2")
-        .to("#door-r", { x: "100%", duration: 0.6, ease: "power3.inOut" }, "<")
-        .call(() => { isMoving = false; });
+        .to(elevatorPanel, { opacity: 0, pointerEvents: "none", scale: 0.95, duration: 0.3 })
+        .to(liftCounter, { opacity: 0, duration: 0.3 }, "<")
+        .to("#door-l", { x: "-100%", duration: 1.2, ease: "power3.inOut" }, "+=0.2")
+        .to("#door-r", { x: "100%", duration: 1.2, ease: "power3.inOut" }, "<")
+        .call(() => {
+          isMoving = false;
+          // Show/hide nav logo based on floor
+          if (currentFloor === 0) {
+            gsap.to("#nav-logo", { opacity: 0, duration: 0.3 });
+            gsap.to("#floor0-logo", { opacity: 1, duration: 1, ease: "power2.out" });
+          } else {
+            gsap.to("#nav-logo", { opacity: 1, duration: 0.5, ease: "power2.out" });
+          }
+        });
     }
 
-    // Input Events with Boundary Logic
+    // Input Events
     window.addEventListener('wheel', (e) => {
       if (isMoving) return;
       if (Math.abs(e.deltaY) > 30) {
@@ -503,12 +659,6 @@
         if(currentFloor - 1 >= 0) goToFloor(currentFloor - 1);
       }
     });
-
-    window.onload = () => {
-      gsap.to("#door-l", { x: "-100%", duration: 1.0, ease: "power4.inOut", delay: 0.2 });
-      gsap.to("#door-r", { x: "100%", duration: 1.0, ease: "power4.inOut", delay: 0.2 });
-      setTimeout(playDing, 1000);
-    };
   </script>
 </body>
 </html>
