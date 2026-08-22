@@ -4,13 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>LEONI Elevators | Luxury Home Lifts India | TUV SUD Certified</title>
-  <meta name="description" content="Experience Vertical Royalty with LEONI. India's best pitless home lifts, vacuum elevators, and gearless residential lifts. TUV SUD certified safety. PAN India Delivery.">
+  <title>LEONI Elevators | Gearless & Hydraulic Home Lifts India</title>
+  <meta name="description" content="Experience Vertical Royalty with LEONI. Gearless MRL and hydraulic home lifts with ARD battery backup as standard. Free site survey. PAN India delivery.">
 
   <script>
-    if (!( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) && window.innerWidth > 768) {
-      window.location.href = "index.html";
-    }
+    (function () {
+      var isMobileUA = /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      function check() {
+        var w = window.innerWidth || document.documentElement.clientWidth || 0;
+        // Re-checked on resize so a desktop visitor who arrives here (or widens the
+        // window) is handed back to the full site instead of being stranded.
+        if (!isMobileUA && w > 768) { window.location.replace('index.html'); }
+      }
+      check();
+      var t;
+      window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(check, 250); });
+    })();
   </script>
   <meta name="author" content="LEONI Elevators">
   <meta name="robots" content="index, follow">
@@ -18,16 +27,16 @@
   <link rel="icon" type="image/webp" href="images/logo.webp">
 
   <meta property="og:title" content="LEONI Elevators | Luxury Vertical Solutions">
-  <meta property="og:description" content="Premium machine-room-less (MRL) home lifts and commercial elevators in Hyderabad, Telangana, and Andhra Pradesh.">
+  <meta property="og:description" content="Premium gearless and hydraulic home lifts with machine-room-less (MRL) options in Hyderabad, Telangana, and Andhra Pradesh.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://leonielevators.in/">
   <meta property="og:site_name" content="LEONI Elevators">
   <meta property="og:image" content="https://leonielevators.in/images/lux-elivator.webp">
-  <meta property="og:image:alt" content="LEONI luxury pitless home lift with designer cabin finish">
+  <meta property="og:image:alt" content="LEONI luxury home lift with designer cabin finish">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="LEONI Elevators | Luxury Vertical Solutions">
-  <meta name="twitter:description" content="Premium machine-room-less (MRL) home lifts and commercial elevators in Hyderabad, Telangana, and Andhra Pradesh.">
+  <meta name="twitter:description" content="Premium gearless and hydraulic home lifts with machine-room-less (MRL) options in Hyderabad, Telangana, and Andhra Pradesh.">
   <meta name="twitter:image" content="https://leonielevators.in/images/lux-elivator.webp">
 
   <script type="application/ld+json">
@@ -192,10 +201,37 @@
     /* Mobile Adjustments */
     @media (max-width: 768px) {
       .door-logo-img { width: 200px; }
-      #elevator-panel { left: 10px; transform: scale(0.7) translateY(-50%); }
+      /* The panel is scaled down to stay slim on phones, so the buttons are sized
+         up to compensate: 52px * 0.85 keeps the real tap target at ~44px. */
+      #elevator-panel { left: 10px; transform: scale(0.85) translateY(-50%); padding: 0.5rem; gap: 0.35rem; }
+      .floor-btn { width: 52px; height: 52px; font-size: 15px; }
       .led-display-container { padding: 10px 16px; gap: 12px; }
       .led-number { font-size: 3rem; }
       .led-glow { font-size: 1.8rem; }
+    }
+
+    /* Short phones (e.g. 360x640, common in India): floors are fixed-height panels,
+       so tall content was being cut off below the fold. Tighten vertical rhythm and
+       cap media height so each floor fits without relying on in-panel scrolling. */
+    @media (max-height: 720px) {
+      .section-container { padding-top: 0.5rem; padding-bottom: 0.5rem; gap: 0.75rem; }
+      .section-container img { max-height: 15vh; width: auto; object-fit: cover; }
+      /* Fixed-height media frames (h-[400px]) are the main reason floors 2 and 4
+         ran past the fold on short phones — make them viewport-relative instead. */
+      .section-container [class*="h-[400px]"] { height: 32vh !important; }
+      .section-container h2 { margin-bottom: 0.35rem; }
+      .section-container h3 { font-size: 1.6rem; line-height: 1.15; margin-bottom: 0.5rem; }
+      .section-container p { font-size: 0.9rem; line-height: 1.45; }
+      .section-container .grid { gap: 0.5rem; }
+      .section-container .flex.flex-col { gap: 0.75rem; }
+    }
+
+    /* Very short screens (360x600 and smaller budget Androids). */
+    @media (max-height: 640px) {
+      .section-container img { max-height: 12vh; }
+      .section-container [class*="h-[400px]"] { height: 26vh !important; }
+      .section-container h3 { font-size: 1.35rem; }
+      .section-container p { font-size: 0.85rem; line-height: 1.4; }
     }
   </style>
 </head>
@@ -268,7 +304,7 @@
         <img id="floor0-logo" src="images/logo-white-bg.webp" alt="LEONI Elevators" class="w-64 md:w-96 mx-auto mb-6" style="opacity: 0;">
         <div class="h-1 w-20 md:w-24 bg-[#9B1B30] mx-auto mb-4"></div>
 
-        <p class="mt-6 text-gray-500 max-w-xl mx-auto text-sm md:text-base hidden md:block">Transforming residential and commercial spaces across Telangana & Andhra Pradesh with world-class gearless elevator technology.</p>
+        <p class="mt-6 text-gray-500 max-w-xl mx-auto text-sm md:text-base hidden md:block">Transforming residential and commercial spaces across Telangana & Andhra Pradesh with world-class traction and hydraulic lift technology, built with BIS/ISI-marked and CE-marked components.</p>
       </div>
     </section>
 
@@ -299,7 +335,7 @@
           <h2 class="text-[#9B1B30] text-sm font-bold tracking-widest mb-2">GEARLESS TECHNOLOGY</h2>
           <h3 class="heading text-4xl md:text-6xl font-black mb-8 md:mb-10 leading-tight text-gray-900">Intelligent Transport</h3>
           <div class="flex flex-col gap-6">
-            <div class="flex gap-4 md:gap-6 items-center"><span class="text-3xl md:text-4xl font-black text-black/10">01</span><div><h4 class="font-bold text-base md:text-lg text-gray-900">Space-Saving MRL Design</h4><p class="text-gray-500 text-xs md:text-sm">No dedicated machine room required. Perfect for retrofitting luxury villas in Jubilee Hills or Vizag.</p></div></div>
+            <div class="flex gap-4 md:gap-6 items-center"><span class="text-3xl md:text-4xl font-black text-black/10">01</span><div><h4 class="font-bold text-base md:text-lg text-gray-900">Space-Saving MRL Design</h4><p class="text-gray-500 text-xs md:text-sm">Machine-room-less (MRL) options on our gearless line &mdash; perfect for luxury villas in Jubilee Hills or Vizag.</p></div></div>
             <div class="flex gap-4 md:gap-6 items-center"><span class="text-3xl md:text-4xl font-black text-black/10">02</span><div><h4 class="font-bold text-base md:text-lg text-gray-900">Magnetic Drive</h4><p class="text-gray-500 text-xs md:text-sm">State-of-the-art PMSM gearless technology provides zero wear and whisper-quiet operation in residential spaces.</p></div></div>
           </div>
         </div>
@@ -314,23 +350,23 @@
         <div class="grid grid-cols-2 gap-4 parallax-img">
           <div class="feature-card p-5 rounded-2xl text-left">
             <i class="fas fa-wind text-2xl text-[#9B1B30] mb-3"></i>
-            <h4 class="font-bold text-sm mb-1 text-gray-900">Pneumatic Drive</h4>
-            <p class="text-[10px] text-gray-500 leading-tight">Smooth, weightless air-driven ascent.</p>
+            <h4 class="font-bold text-sm mb-1 text-gray-900">Hydraulic Option</h4>
+            <p class="text-[10px] text-gray-500 leading-tight">Smooth, gentle hydraulic ride for low-rise homes.</p>
           </div>
           <div class="feature-card p-5 rounded-2xl text-left">
             <i class="fas fa-leaf text-2xl text-[#9B1B30] mb-3"></i>
             <h4 class="font-bold text-sm mb-1 text-gray-900">Eco-Friendly</h4>
-            <p class="text-[10px] text-gray-500 leading-tight">Greener than your household fridge.</p>
+            <p class="text-[10px] text-gray-500 leading-tight">Efficient drives, low running costs.</p>
           </div>
           <div class="feature-card p-5 rounded-2xl text-left">
             <i class="fas fa-bolt text-2xl text-[#9B1B30] mb-3"></i>
-            <h4 class="font-bold text-sm mb-1 text-gray-900">40% Saving</h4>
-            <p class="text-[10px] text-gray-500 leading-tight">Consumes power only during ascent.</p>
+            <h4 class="font-bold text-sm mb-1 text-gray-900">ARD Backup</h4>
+            <p class="text-[10px] text-gray-500 leading-tight">Safe descent in any power cut.</p>
           </div>
           <div class="feature-card p-5 rounded-2xl text-left">
             <i class="fas fa-tools text-2xl text-[#9B1B30] mb-3"></i>
-            <h4 class="font-bold text-sm mb-1 text-gray-900">48h Install</h4>
-            <p class="text-[10px] text-gray-500 leading-tight">No pit or major civil work required.</p>
+            <h4 class="font-bold text-sm mb-1 text-gray-900">Managed Install</h4>
+            <p class="text-[10px] text-gray-500 leading-tight">Standard pit and civil work handled by us.</p>
           </div>
         </div>
       </div>
