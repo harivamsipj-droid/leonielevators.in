@@ -41,6 +41,55 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.tailwindcss.com">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+  <!-- Google tag (gtag.js) - Google Ads -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18411596450"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-18411596450');
+  </script>
+
+  <!-- LEONI conversion tracking hooks -->
+  <script>
+    // Uses the Google Ads gtag already installed above.
+    function trackWhatsAppClick(event) {
+      try {
+        gtag('event', 'whatsapp_click', {
+          event_category: 'lead',
+          event_label: 'WhatsApp',
+          value: 1
+        });
+      } catch (err) {
+        // Never block the WhatsApp link if tracking fails.
+      }
+    }
+
+    function trackLeadFormSubmit(event) {
+      try {
+        gtag('event', 'generate_lead', {
+          event_category: 'lead',
+          event_label: 'Website lead form',
+          value: 1
+        });
+      } catch (err) {
+        // Never block a successful form submission if tracking fails.
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('a[href*="wa.me/"]').forEach(function (link) {
+        link.addEventListener('click', trackWhatsAppClick, { passive: true });
+      });
+
+      document.querySelectorAll('form').forEach(function (form) {
+        form.addEventListener('submit', trackLeadFormSubmit, { passive: true });
+      });
+    });
+  </script>
+
   <link rel="alternate" media="only screen and (max-width: 768px)" href="https://leonielevators.in/mobile.html">
 
   <script type="application/ld+json">
@@ -642,9 +691,10 @@
     </section>
 
     <footer class="pt-32 pb-16 px-16 relative border-t border-black/5" style="background: #F5F0EB;">
-      <div class="max-w-screen-2xl mx-auto grid lg:grid-cols-4 gap-20 mb-20">
-        <div class="col-span-2">
-          <img src="images/logo.webp" alt="LEONI Elevators" loading="lazy" class="h-12 mb-8">
+      <div class="max-w-screen-2xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-14 mb-20">
+        <!-- Brand -->
+        <div class="lg:pr-8">
+          <img src="images/logo.webp" alt="LEONI Elevators" loading="lazy" class="h-12 mb-8 object-contain object-left">
           <p class="text-gray-500 text-lg mb-8 max-w-md leading-relaxed">Redefining vertical mobility in India. From our Hyderabad HQ, we deliver luxury elevator solutions PAN INDIA.</p>
           <div class="flex gap-4 mb-8">
               <a href="#" class="w-11 h-11 rounded-full border border-black/10 flex items-center justify-center text-gray-600 hover:bg-[var(--red)] hover:border-[var(--red)] hover:text-white transition-all" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -654,31 +704,42 @@
           </div>
         </div>
 
+        <!-- Experience Centers -->
         <div>
           <h4 class="text-[var(--red)] font-bold mb-8 tracking-widest uppercase text-sm">Experience Centers</h4>
-          <ul class="space-y-4 text-gray-500">
-            <li><a href="blogs/hyderabad-luxury-lifts.html" class="hover:text-[var(--red)] transition-colors text-[var(--red)] font-semibold">Hyderabad HQ (Hitech City)</a></li>
-            <li><a href="blogs/vizag-luxury-lifts.html" class="hover:text-[var(--red)] transition-colors">Vizag</a></li>
-            <li><a href="blogs/mumbai-luxury-lifts.html" class="hover:text-[var(--red)] transition-colors">Mumbai</a></li>
-            <li><a href="blogs/delhi-luxury-lifts.html" class="hover:text-[var(--red)] transition-colors">Delhi NCR</a></li>
-            <li><a href="blogs/bangalore-luxury-lifts.html" class="hover:text-[var(--red)] transition-colors">Bangalore</a></li>
-            <li><a href="blogs/chennai-luxury-lifts.html" class="hover:text-[var(--red)] transition-colors">Chennai</a></li>
-            <li><a href="blogs/india-home-lift-comparison.html" class="hover:text-[var(--red)] transition-colors">Brand Comparison</a></li>
-            <li><a href="blogs/home-lift-price-india.html" class="hover:text-[var(--red)] transition-colors">Price Guide</a></li>
-            <li><a href="blogs/pitless-home-lifts-guide.html" class="hover:text-[var(--red)] transition-colors">Lift Pit Guide</a></li>
-            <li><a href="blogs/vacuum-vs-gearless-home-lifts.html" class="hover:text-[var(--red)] transition-colors">Lift Technology Guide</a></li>
-            <li><a href="blogs/home-lifts-for-elderly-india.html" class="hover:text-[var(--red)] transition-colors">Lifts for Elderly</a></li>
+          <ul class="space-y-4 text-gray-500 text-base leading-relaxed">
+            <li><a href="blogs/hyderabad-luxury-lifts.html" class="block hover:text-[var(--red)] transition-colors text-[var(--red)] font-semibold">Hyderabad HQ (Hitech City)</a></li>
+            <li><a href="blogs/vizag-luxury-lifts.html" class="block hover:text-[var(--red)] transition-colors">Vizag</a></li>
+            <li><a href="blogs/mumbai-luxury-lifts.html" class="block hover:text-[var(--red)] transition-colors">Mumbai</a></li>
+            <li><a href="blogs/delhi-luxury-lifts.html" class="block hover:text-[var(--red)] transition-colors">Delhi NCR</a></li>
+            <li><a href="blogs/bangalore-luxury-lifts.html" class="block hover:text-[var(--red)] transition-colors">Bangalore</a></li>
+            <li><a href="blogs/chennai-luxury-lifts.html" class="block hover:text-[var(--red)] transition-colors">Chennai</a></li>
             <li class="pt-2 italic text-xs text-gray-400">Delivering PAN INDIA</li>
           </ul>
         </div>
 
+        <!-- Resources -->
+        <div>
+          <h4 class="text-[var(--red)] font-bold mb-8 tracking-widest uppercase text-sm">Resources</h4>
+          <ul class="space-y-4 text-gray-500 text-base leading-relaxed">
+            <li><a href="blogs/india-home-lift-comparison.html" class="block hover:text-[var(--red)] transition-colors">Brand Comparison</a></li>
+            <li><a href="blogs/home-lift-price-india.html" class="block hover:text-[var(--red)] transition-colors">Price Guide</a></li>
+            <li><a href="blogs/pitless-home-lifts-guide.html" class="block hover:text-[var(--red)] transition-colors">Lift Pit Guide</a></li>
+            <li><a href="blogs/vacuum-vs-gearless-home-lifts.html" class="block hover:text-[var(--red)] transition-colors">Lift Technology Guide</a></li>
+            <li><a href="blogs/home-lifts-for-elderly-india.html" class="block hover:text-[var(--red)] transition-colors">Lifts for Elderly</a></li>
+          </ul>
+        </div>
+
+        <!-- Luxury Services -->
         <div>
           <h4 class="text-[var(--red)] font-bold mb-8 tracking-widest uppercase text-sm">Luxury Services</h4>
-          <ul class="space-y-4 text-gray-500">
-            <li><i class="fas fa-phone mr-3 text-[var(--red)]"></i> +91 7396894340</li>
-            <li><i class="fas fa-envelope mr-3 text-[var(--red)]"></i> help@leonielevators.in</li>
-            <li class="pt-6">
-              <a href="https://wa.me/917396894340?text=Hi%20LEONI%20Elevators%2C%20I%20am%20coming%20from%20your%20website%20(Home%20page)%20and%20would%20like%20a%20quote%20for%20a%20home%20lift." class="btn-royal px-8 py-3 rounded-full text-xs inline-block text-white">Request a Quote</a>
+          <ul class="space-y-5 text-gray-500 text-base leading-relaxed">
+            <li class="flex items-center gap-3"><i class="fas fa-phone text-[var(--red)] w-5 text-center"></i><a href="tel:+917396894340" class="hover:text-[var(--red)] transition-colors">+91 7396894340</a></li>
+            <li class="flex items-center gap-3"><i class="fas fa-envelope text-[var(--red)] w-5 text-center"></i><a href="mailto:help@leonielevators.in" class="hover:text-[var(--red)] transition-colors break-all">help@leonielevators.in</a></li>
+            <li class="pt-4">
+              <a href="https://wa.me/917396894340?text=Hi%20LEONI%20Elevators%2C%20I%20am%20coming%20from%20your%20website%20(Home%20page)%20and%20would%20like%20a%20quote%20for%20a%20home%20lift." class="btn-royal px-8 py-3 rounded-full text-xs inline-flex items-center gap-2 text-white">
+                <i class="fab fa-whatsapp text-base"></i> Request a Quote
+              </a>
             </li>
           </ul>
         </div>
