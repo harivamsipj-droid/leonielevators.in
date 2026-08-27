@@ -52,7 +52,7 @@
     gtag('config', 'AW-18411596450');
   </script>
 
-  <!-- LEONI conversion tracking hooks -->
+  <!-- LEONI conversion tracking hooks: WhatsApp, phone clicks and lead forms -->
   <script>
     // Uses the Google Ads gtag already installed above.
     function trackWhatsAppClick(event) {
@@ -79,9 +79,25 @@
       }
     }
 
+    function trackPhoneClick(event) {
+      try {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-18411596450/spxOCKKQxegecXELVq$tE',
+          'value': 1.0,
+          'currency': 'INR'
+        });
+      } catch (err) {
+        // Never block the phone call if tracking fails.
+      }
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
       document.querySelectorAll('a[href*="wa.me/"]').forEach(function (link) {
         link.addEventListener('click', trackWhatsAppClick, { passive: true });
+      });
+
+      document.querySelectorAll('a[href^="tel:"]').forEach(function (link) {
+        link.addEventListener('click', trackPhoneClick, { passive: true });
       });
 
       document.querySelectorAll('form').forEach(function (form) {
@@ -317,6 +333,18 @@
       width: 100%; pointer-events: none;
     }
     .pointer-auto { pointer-events: auto; }
+
+    /* Footer: clean, separated columns on desktop and stacked sections on mobile */
+    #site-footer .footer-column { min-width: 0; }
+    #site-footer ul { margin: 0; padding: 0; list-style: none; }
+    #site-footer li { max-width: 100%; }
+    #site-footer a { overflow-wrap: anywhere; }
+    @media (max-width: 1024px) {
+      #site-footer { padding-left: 2rem; padding-right: 2rem; }
+    }
+    @media (max-width: 640px) {
+      #site-footer { padding-left: 1.25rem; padding-right: 1.25rem; }
+    }
   </style>
 
   <noscript>
@@ -464,7 +492,7 @@
           </div>
           <div class="why-card">
             <div class="icon-wrap"><i class="fas fa-headset text-2xl text-[var(--red)]"></i></div>
-            <h4 class="font-bold text-lg mb-2">Lifetime AMC Support</h4>
+            <h4 class="font-bold text-lg mb-2">Long-Term AMC Support</h4>
             <p class="text-gray-400 text-sm leading-relaxed">Dedicated service team with 24/7 emergency support and annual maintenance.</p>
           </div>
           <div class="why-card">
@@ -690,10 +718,10 @@
       </div>
     </section>
 
-    <footer class="pt-32 pb-16 px-16 relative border-t border-black/5" style="background: #F5F0EB;">
+    <footer id="site-footer" class="pt-32 pb-16 px-16 relative border-t border-black/5" style="background: #F5F0EB;">
       <div class="max-w-screen-2xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-14 mb-20">
         <!-- Brand -->
-        <div class="lg:pr-8">
+        <div class="footer-column lg:pr-8">
           <img src="images/logo.webp" alt="LEONI Elevators" loading="lazy" class="h-12 mb-8 object-contain object-left">
           <p class="text-gray-500 text-lg mb-8 max-w-md leading-relaxed">Redefining vertical mobility in India. From our Hyderabad HQ, we deliver luxury elevator solutions PAN INDIA.</p>
           <div class="flex gap-4 mb-8">
@@ -705,7 +733,7 @@
         </div>
 
         <!-- Experience Centers -->
-        <div>
+        <div class="footer-column">
           <h4 class="text-[var(--red)] font-bold mb-8 tracking-widest uppercase text-sm">Experience Centers</h4>
           <ul class="space-y-4 text-gray-500 text-base leading-relaxed">
             <li><a href="blogs/hyderabad-luxury-lifts.html" class="block hover:text-[var(--red)] transition-colors text-[var(--red)] font-semibold">Hyderabad HQ (Hitech City)</a></li>
@@ -719,19 +747,18 @@
         </div>
 
         <!-- Resources -->
-        <div>
+        <div class="footer-column">
           <h4 class="text-[var(--red)] font-bold mb-8 tracking-widest uppercase text-sm">Resources</h4>
           <ul class="space-y-4 text-gray-500 text-base leading-relaxed">
             <li><a href="blogs/india-home-lift-comparison.html" class="block hover:text-[var(--red)] transition-colors">Brand Comparison</a></li>
             <li><a href="blogs/home-lift-price-india.html" class="block hover:text-[var(--red)] transition-colors">Price Guide</a></li>
             <li><a href="blogs/pitless-home-lifts-guide.html" class="block hover:text-[var(--red)] transition-colors">Lift Pit Guide</a></li>
-            <li><a href="blogs/vacuum-vs-gearless-home-lifts.html" class="block hover:text-[var(--red)] transition-colors">Lift Technology Guide</a></li>
             <li><a href="blogs/home-lifts-for-elderly-india.html" class="block hover:text-[var(--red)] transition-colors">Lifts for Elderly</a></li>
           </ul>
         </div>
 
         <!-- Luxury Services -->
-        <div>
+        <div class="footer-column">
           <h4 class="text-[var(--red)] font-bold mb-8 tracking-widest uppercase text-sm">Luxury Services</h4>
           <ul class="space-y-5 text-gray-500 text-base leading-relaxed">
             <li class="flex items-center gap-3"><i class="fas fa-phone text-[var(--red)] w-5 text-center"></i><a href="tel:+917396894340" class="hover:text-[var(--red)] transition-colors">+91 7396894340</a></li>
