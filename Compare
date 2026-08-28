@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Compare LEONI Packages | Signature vs Premium vs Luxury</title>
+  <meta name="description" content="Compare LEONI Signature, Premium and Luxury home elevator packages side by side &mdash; pricing, finishes, technology and more.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://leonielevators.in/compare.html">
+
+  <link rel="icon" type="image/webp" href="images/logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Google tag (gtag.js) - Google Ads -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18411596450"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18411596450');
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+    :root {
+      --red: #9B1B30;
+      --red-light: #C8102E;
+      --red-dark: #6B0F1A;
+      --black: #0a0a0a;
+    }
+    * { box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #ffffff; color: var(--black); margin: 0; }
+    .heading { font-family: 'Playfair Display', serif; }
+
+    .btn-royal { background-color: var(--red); color: white; transition: all 0.3s ease; box-shadow: 0 8px 25px rgba(155, 27, 48, 0.35); }
+    .btn-royal:hover { background-color: var(--red-dark); transform: translateY(-2px); }
+    .btn-outline { border: 2px solid rgba(0,0,0,0.12); color: var(--black); transition: all 0.4s ease; }
+    .btn-outline:hover { background: var(--red); color: white; border-color: var(--red); }
+
+    .section-divider { width: 80px; height: 3px; background-color: var(--red); margin: 2rem auto; }
+
+    /* Comparison table (desktop) */
+    .compare-table { width: 100%; border-collapse: separate; border-spacing: 0; }
+    .compare-table th, .compare-table td { padding: 1.25rem 1.5rem; text-align: left; border-bottom: 1px solid rgba(0,0,0,0.06); }
+    .compare-table thead th { background: #fafafa; font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 800; }
+    .compare-table thead th:first-child { background: transparent; }
+    .compare-table tbody th { font-weight: 600; font-size: 0.85rem; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+    .compare-table tbody td { font-size: 0.92rem; color: var(--black); }
+    .compare-table .col-featured { background: rgba(155,27,48,0.03); }
+    .compare-table thead th.col-featured { background: rgba(155,27,48,0.06); position: relative; }
+    .featured-tag { display: inline-block; background: var(--red); color: white; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.25rem 0.7rem; border-radius: 999px; margin-bottom: 0.4rem; }
+    .compare-price { font-weight: 800; }
+
+    /* Mobile stacked cards */
+    .compare-mobile-card { border: 1px solid rgba(0,0,0,0.08); border-radius: 1rem; padding: 1.75rem; margin-bottom: 1.5rem; }
+    .compare-mobile-card.featured { border: 2px solid var(--red); box-shadow: 0 15px 35px rgba(155,27,48,0.1); }
+    .compare-mobile-row { display: flex; justify-content: space-between; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.05); font-size: 0.9rem; }
+    .compare-mobile-row:last-child { border-bottom: none; }
+    .compare-mobile-row .label { color: #6b7280; font-weight: 600; }
+    .compare-mobile-row .value { text-align: right; font-weight: 500; }
+  </style>
+</head>
+<body class="antialiased">
+
+  <nav class="w-full py-6 px-6 md:px-16 flex justify-between items-center border-b border-black/5">
+    <a href="index.html" class="cursor-pointer">
+      <img src="images/logo.webp" alt="LEONI Elevators" class="h-9">
+    </a>
+    <a href="index.html" class="text-xs font-semibold tracking-[0.15em] uppercase text-[var(--black)] hover:text-[var(--red)] transition-colors">
+      <i class="fas fa-arrow-left text-[10px] mr-2"></i>Back to Home
+    </a>
+  </nav>
+
+  <header class="px-6 md:px-16 pt-16 pb-8 max-w-4xl mx-auto text-center">
+    <h2 class="text-[var(--red)] text-sm font-bold tracking-[0.4em] mb-4 uppercase">The LEONI Collection</h2>
+    <h1 class="heading text-4xl md:text-6xl font-black mb-6">At a Glance &mdash; Compare<br class="hidden md:block"> the LEONI Collection</h1>
+    <div class="section-divider"></div>
+    <p class="text-gray-500 text-lg max-w-2xl mx-auto">Signature, Premium and Luxury are built on the same safety foundation &mdash; ARD backup and quality-marked components on every tier. Here's how they differ.</p>
+  </header>
+
+  <!-- Desktop table -->
+  <main class="px-6 md:px-16 pb-20 max-w-6xl mx-auto hidden lg:block">
+    <div class="overflow-x-auto rounded-2xl border border-black/8">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>LEONI Signature</th>
+            <th class="col-featured">
+              <span class="featured-tag">Most Chosen</span><br>LEONI Premium
+            </th>
+            <th>LEONI Luxury</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Positioning</th>
+            <td>Essential Premium</td>
+            <td class="col-featured">Enhanced Premium</td>
+            <td>Flagship Luxury</td>
+          </tr>
+          <tr>
+            <th>Price</th>
+            <td class="compare-price">&#8377;9,99,900 + GST</td>
+            <td class="col-featured compare-price">&#8377;12&ndash;14 Lakhs + GST</td>
+            <td class="compare-price">&#8377;15&ndash;18 Lakhs + GST</td>
+          </tr>
+          <tr>
+            <th>Cabin Finish</th>
+            <td>Premium</td>
+            <td class="col-featured">Premium+</td>
+            <td>Luxury (Gold / Marble / Glass series)</td>
+          </tr>
+          <tr>
+            <th>Customisation</th>
+            <td>Standard</td>
+            <td class="col-featured">Enhanced</td>
+            <td>Bespoke</td>
+          </tr>
+          <tr>
+            <th>Technology</th>
+            <td>Gearless MRL / Hydraulic</td>
+            <td class="col-featured">Gearless MRL / Hydraulic, advanced tuning</td>
+            <td>Gearless MRL / Hydraulic, flagship tuning</td>
+          </tr>
+          <tr>
+            <th>Safety &amp; ARD Backup</th>
+            <td>Included</td>
+            <td class="col-featured">Included</td>
+            <td>Included</td>
+          </tr>
+          <tr>
+            <th>Comfort &amp; Ride</th>
+            <td>Premium</td>
+            <td class="col-featured">Enhanced</td>
+            <td>Flagship</td>
+          </tr>
+          <tr>
+            <th>Design Options</th>
+            <td>Selected finishes</td>
+            <td class="col-featured">Expanded finishes</td>
+            <td>Bespoke design</td>
+          </tr>
+          <tr>
+            <th>Service &amp; Support</th>
+            <td>2-year warranty, standard scheduling</td>
+            <td class="col-featured">2-year warranty, priority scheduling</td>
+            <td>2-year warranty, dedicated project manager</td>
+          </tr>
+          <tr>
+            <th></th>
+            <td><button type="button" class="btn-outline w-full py-3 rounded-full font-bold uppercase tracking-widest text-xs js-open-quote-modal-link" data-package="LEONI Signature">Enquire Now</button></td>
+            <td class="col-featured"><button type="button" class="btn-royal w-full py-3 rounded-full font-bold uppercase tracking-widest text-xs js-open-quote-modal-link" data-package="LEONI Premium">Enquire Now</button></td>
+            <td><button type="button" class="btn-outline w-full py-3 rounded-full font-bold uppercase tracking-widest text-xs js-open-quote-modal-link" data-package="LEONI Luxury">Enquire Now</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- Mobile stacked cards -->
+  <main class="px-6 pb-20 max-w-lg mx-auto lg:hidden">
+    <div class="compare-mobile-card">
+      <h3 class="heading text-xl font-bold mb-1">LEONI Signature</h3>
+      <p class="text-[var(--red)] text-xs font-bold uppercase tracking-widest mb-4">Essential Premium</p>
+      <div class="compare-mobile-row"><span class="label">Price</span><span class="value">&#8377;9,99,900 + GST</span></div>
+      <div class="compare-mobile-row"><span class="label">Cabin Finish</span><span class="value">Premium</span></div>
+      <div class="compare-mobile-row"><span class="label">Customisation</span><span class="value">Standard</span></div>
+      <div class="compare-mobile-row"><span class="label">Technology</span><span class="value">Gearless MRL / Hydraulic</span></div>
+      <div class="compare-mobile-row"><span class="label">Safety &amp; ARD</span><span class="value">Included</span></div>
+      <div class="compare-mobile-row"><span class="label">Comfort &amp; Ride</span><span class="value">Premium</span></div>
+      <div class="compare-mobile-row"><span class="label">Design Options</span><span class="value">Selected finishes</span></div>
+      <div class="compare-mobile-row"><span class="label">Service</span><span class="value">2-yr warranty, standard scheduling</span></div>
+      <button type="button" class="btn-outline w-full mt-5 py-3 rounded-full font-bold uppercase tracking-widest text-xs js-open-quote-modal-link" data-package="LEONI Signature">Enquire Now</button>
+    </div>
+
+    <div class="compare-mobile-card featured">
+      <span class="featured-tag">Most Chosen</span>
+      <h3 class="heading text-xl font-bold mb-1">LEONI Premium</h3>
+      <p class="text-[var(--red)] text-xs font-bold uppercase tracking-widest mb-4">Enhanced Premium</p>
+      <div class="compare-mobile-row"><span class="label">Price</span><span class="value">&#8377;12&ndash;14 Lakhs + GST</span></div>
+      <div class="compare-mobile-row"><span class="label">Cabin Finish</span><span class="value">Premium+</span></div>
+      <div class="compare-mobile-row"><span class="label">Customisation</span><span class="value">Enhanced</span></div>
+      <div class="compare-mobile-row"><span class="label">Technology</span><span class="value">Advanced tuning</span></div>
+      <div class="compare-mobile-row"><span class="label">Safety &amp; ARD</span><span class="value">Included</span></div>
+      <div class="compare-mobile-row"><span class="label">Comfort &amp; Ride</span><span class="value">Enhanced</span></div>
+      <div class="compare-mobile-row"><span class="label">Design Options</span><span class="value">Expanded finishes</span></div>
+      <div class="compare-mobile-row"><span class="label">Service</span><span class="value">2-yr warranty, priority scheduling</span></div>
+      <button type="button" class="btn-royal w-full mt-5 py-3 rounded-full font-bold uppercase tracking-widest text-xs js-open-quote-modal-link" data-package="LEONI Premium">Enquire Now</button>
+    </div>
+
+    <div class="compare-mobile-card">
+      <h3 class="heading text-xl font-bold mb-1">LEONI Luxury</h3>
+      <p class="text-[var(--red)] text-xs font-bold uppercase tracking-widest mb-4">Flagship Luxury</p>
+      <div class="compare-mobile-row"><span class="label">Price</span><span class="value">&#8377;15&ndash;18 Lakhs + GST</span></div>
+      <div class="compare-mobile-row"><span class="label">Cabin Finish</span><span class="value">Gold / Marble / Glass</span></div>
+      <div class="compare-mobile-row"><span class="label">Customisation</span><span class="value">Bespoke</span></div>
+      <div class="compare-mobile-row"><span class="label">Technology</span><span class="value">Flagship tuning</span></div>
+      <div class="compare-mobile-row"><span class="label">Safety &amp; ARD</span><span class="value">Included</span></div>
+      <div class="compare-mobile-row"><span class="label">Comfort &amp; Ride</span><span class="value">Flagship</span></div>
+      <div class="compare-mobile-row"><span class="label">Design Options</span><span class="value">Bespoke design</span></div>
+      <div class="compare-mobile-row"><span class="label">Service</span><span class="value">2-yr warranty, dedicated PM</span></div>
+      <button type="button" class="btn-outline w-full mt-5 py-3 rounded-full font-bold uppercase tracking-widest text-xs js-open-quote-modal-link" data-package="LEONI Luxury">Enquire Now</button>
+    </div>
+  </main>
+
+  <section class="px-6 md:px-16 pb-24 text-center">
+    <p class="text-gray-400 text-xs max-w-xl mx-auto">All three tiers are built on the same ARD safety backup and BIS/ISI &amp; CE-marked components. Not sure which fits your home? Our team can recommend the right option after a free site survey.</p>
+    <a href="index.html#packages" class="btn-royal inline-block mt-8 px-12 py-4 rounded-full font-bold uppercase tracking-widest text-sm">Back to Packages</a>
+  </section>
+
+  <footer class="pt-16 pb-10 px-6 md:px-16 border-t border-black/5" style="background: #F5F0EB;">
+    <div class="max-w-screen-2xl mx-auto text-center text-gray-400 text-xs tracking-widest uppercase">
+      &copy; 2026 LEONI Elevators. Crafted for Royalty. &middot;
+      <a href="privacy-policy.html" class="hover:text-[var(--red)]">Privacy Policy</a> &middot;
+      <a href="terms-and-conditions.html" class="hover:text-[var(--red)]">Terms &amp; Conditions</a>
+    </div>
+  </footer>
+
+  <script>
+    // "Enquire Now" here sends the visitor to the homepage quote modal,
+    // pre-selecting the package they clicked from.
+    document.querySelectorAll('.js-open-quote-modal-link').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const pkg = btn.getAttribute('data-package') || '';
+        window.location.href = 'index.html?package=' + encodeURIComponent(pkg) + '#packages';
+      });
+    });
+  </script>
+
+</body>
+</html>
