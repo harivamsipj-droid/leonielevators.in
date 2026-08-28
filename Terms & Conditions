@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Terms &amp; Conditions | LEONI Elevators</title>
+  <meta name="description" content="Terms and conditions governing quotations, orders, payment, warranty, and installation for LEONI Elevators home lifts.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://leonielevators.in/terms-and-conditions.html">
+
+  <link rel="icon" type="image/webp" href="images/logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+    :root {
+      --red: #9B1B30;
+      --red-light: #C8102E;
+      --red-dark: #6B0F1A;
+      --black: #0a0a0a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #ffffff;
+      color: var(--black);
+      margin: 0;
+    }
+    .heading { font-family: 'Playfair Display', serif; }
+    .btn-royal {
+      background-color: var(--red); color: white; transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(155, 27, 48, 0.35);
+    }
+    .btn-royal:hover { background-color: var(--red-dark); transform: translateY(-2px); }
+    .legal-content h2 {
+      font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 700;
+      color: var(--black); margin-top: 3rem; margin-bottom: 1rem;
+    }
+    .legal-content h3 {
+      font-weight: 700; font-size: 1.1rem; margin-top: 1.75rem; margin-bottom: 0.5rem; color: var(--black);
+    }
+    .legal-content p, .legal-content li { color: #4b5563; line-height: 1.75; font-size: 0.98rem; }
+    .legal-content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1.25rem; }
+    .legal-content ul li { margin-bottom: 0.5rem; }
+    .legal-content a { color: var(--red); text-decoration: underline; }
+    .flag-note {
+      background: #FFF8E6; border: 1px solid #F0C94A; border-radius: 0.5rem;
+      padding: 1rem 1.25rem; font-size: 0.85rem; color: #7A5B00; margin: 1.5rem 0;
+    }
+    .highlight-box {
+      background: #fafafa; border: 1px solid rgba(0,0,0,0.06); border-radius: 0.75rem;
+      padding: 1.5rem; margin: 1.5rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="w-full py-6 px-6 md:px-16 flex justify-between items-center border-b border-black/5">
+    <a href="index.html" class="cursor-pointer">
+      <img src="images/logo.webp" alt="LEONI Elevators" class="h-9">
+    </a>
+    <a href="index.html" class="text-xs font-semibold tracking-[0.15em] uppercase text-[var(--black)] hover:text-[var(--red)] transition-colors">
+      <i class="fas fa-arrow-left text-[10px] mr-2"></i>Back to Home
+    </a>
+  </nav>
+
+  <header class="px-6 md:px-16 pt-16 pb-10 max-w-4xl mx-auto text-center">
+    <h1 class="heading text-4xl md:text-5xl font-black mb-4">Terms &amp; Conditions</h1>
+    <p class="text-gray-500 text-sm tracking-widest uppercase">Effective Date: 27 August 2026</p>
+  </header>
+
+  <main class="px-6 md:px-16 pb-24 max-w-3xl mx-auto legal-content">
+
+    <p>These Terms &amp; Conditions govern your use of the LEONI Elevators website and any quotation, order, or
+    installation agreement entered into with LEONI Elevators ("LEONI", "we", "us", "our", "the Contractor"). By
+    browsing this website, requesting a quote, or placing an order, you ("the Customer") agree to these terms.
+    Your specific signed quotation and order confirmation form the binding contract for your individual purchase
+    — this page summarises the standard terms that apply to that contract.</p>
+
+    <div class="flag-note">
+      <strong>Note for LEONI team:</strong> the sections below are drawn directly from the terms already printed
+      on your quotation documents, so the commercial substance matches what customers already sign. Please
+      confirm the jurisdiction clause in Section 10 — it currently reads <em>"Andhra Pradesh Courts"</em> as
+      per your existing quotation template; since Telangana became a separate state, you may want this updated
+      to Telangana courts, Hyderabad, unless there is a specific reason to keep it as-is.
+    </div>
+
+    <h2>1. Website Use</h2>
+    <p>This website provides information about LEONI's home elevator products and services. Prices,
+    specifications, and images shown on the website are indicative; your final specifications, price, and
+    delivery timeline are confirmed in a signed, itemised quotation specific to your property.</p>
+
+    <h2>2. Quotations &amp; Orders</h2>
+    <p>A quotation issued by LEONI is valid only until the date stated on that quotation. A binding purchase
+    agreement is formed once your order is confirmed by LEONI and an order confirmation is sent to the email
+    address or phone number you provided. <strong>Once an order is confirmed, it cannot be cancelled or
+    refunded.</strong></p>
+
+    <h2>3. Payment Terms</h2>
+    <p>Unless otherwise stated in your specific quotation, payment is collected in the following milestones:</p>
+    <div class="highlight-box">
+      <ul class="mb-0">
+        <li>50% — while placing the order</li>
+        <li>25% — against readiness notification from the factory</li>
+        <li>15% — after readiness notification from the factory</li>
+        <li>10% — post installation</li>
+      </ul>
+    </div>
+    <p>Quoted prices are inclusive of all currently applicable taxes. Should tax rates change, or new levies
+    (including GST) be imposed after the quotation date, any additional burden is payable by the Customer in
+    addition to the quoted price. Where imported materials are used, the quoted price is based on the
+    applicable foreign exchange rate as of the quotation date; LEONI reserves the right to adjust the price if
+    exchange rates change materially before delivery.</p>
+
+    <h2>4. Delivery &amp; Installation</h2>
+    <p>Estimated delivery and installation timelines stated in a quotation are subject to final confirmation on
+    order acceptance, and typically run a few months from approval of drawings and finishes, or as stated in
+    your specific quotation. Installation works begin only once site prerequisites are met and any payment due
+    at that stage has been received. LEONI is not liable for delays caused by force majeure events or by delays
+    in site readiness, access, or payment on the Customer's part; in such cases, reasonable additional costs
+    incurred by LEONI may be passed on to the Customer.</p>
+    <p>The following remain the Customer's responsibility unless otherwise agreed: all civil works, wooden
+    scaffolding, 3-phase power supply with neutral and earth in the machine room, the specified MCB box and
+    breakers, and shaft lighting with power sockets.</p>
+
+    <h2>5. Warranty &amp; AMC</h2>
+    <p>Unless a different term is stated in your specific quotation, LEONI elevators come with a <strong>2-year
+    service warranty</strong>, including 4 routine free services per year. The warranty period begins from the
+    date of handover, or 2 months from the date of material delivery to site — whichever is earlier. Warranty
+    coverage becomes void if the elevator is used without a formal written handover certificate, or without full
+    and final payment having been made.</p>
+
+    <h2>6. Retention of Title</h2>
+    <p>Title in the goods remains with LEONI until the full material value has been paid by the Customer. If
+    payment is not made, LEONI is entitled to hold the installation process until payment is received, and may
+    remove any demountable equipment already installed to limit further exposure.</p>
+
+    <h2>7. Colours &amp; Finishes</h2>
+    <p>LEONI makes every effort to ensure that samples and images shown (online, in brochures, or in renderings)
+    closely match the actual product. Actual products may vary slightly due to display/photography differences,
+    and natural material variation (for example in stainless steel, glass, marble, or powder-coated finishes)
+    between batches.</p>
+
+    <h2>8. General Liability</h2>
+    <p>The Customer agrees not to use the elevator in any way until all works are formally handed over by LEONI
+    with the relevant documentation. LEONI is not liable for indirect or consequential losses, including loss of
+    profit, revenue, use, business interruption, or loss of business opportunity or goodwill, arising from this
+    contract.</p>
+
+    <h2>9. Force Majeure</h2>
+    <p>LEONI is not liable for failure or delay in performing its obligations where this results, directly or
+    indirectly, from causes beyond its reasonable control — including but not limited to acts of God, war,
+    terrorism, pandemics, natural disasters, government action, or labour shortages.</p>
+
+    <h2>10. Governing Law &amp; Jurisdiction</h2>
+    <p>These Terms, and any contract formed under them, are governed by the laws of India. Any dispute shall
+    first be addressed through good-faith negotiation; if unresolved within 15 days of a formal dispute notice,
+    it shall be referred to the competent courts of <em>Andhra Pradesh</em> <span class="text-xs">[see note
+    above — confirm if this should read Telangana]</span>, irrespective of where the elevator is installed.
+    Litigation costs are borne by the party against whom a decree is passed.</p>
+
+    <h2>11. Changes to These Terms</h2>
+    <p>LEONI may update these Terms &amp; Conditions from time to time. The version in force at the time your
+    order is confirmed will govern that order; we encourage you to review this page before placing a new order.</p>
+
+    <h2>12. Contact Us</h2>
+    <p>
+      LEONI Elevators<br>
+      <em>[TO CONFIRM: registered office address]</em><br>
+      Phone: <a href="tel:+917396894340">+91 7396894340</a><br>
+      Email: <a href="mailto:help@leonielevators.in">help@leonielevators.in</a>
+    </p>
+
+  </main>
+
+  <footer class="pt-16 pb-10 px-6 md:px-16 border-t border-black/5" style="background: #F5F0EB;">
+    <div class="max-w-screen-2xl mx-auto text-center text-gray-400 text-xs tracking-widest uppercase">
+      &copy; 2026 LEONI Elevators. Crafted for Royalty. &middot;
+      <a href="privacy-policy.html" class="hover:text-[var(--red)]">Privacy Policy</a> &middot;
+      <a href="terms-and-conditions.html" class="hover:text-[var(--red)]">Terms &amp; Conditions</a>
+    </div>
+  </footer>
+
+</body>
+</html>
