@@ -4,8 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>LEONI Elevators | Gearless & Hydraulic Home Lifts India</title>
-  <meta name="description" content="Experience Vertical Royalty with LEONI. Gearless MRL and hydraulic home lifts with ARD battery backup as standard. Free site survey. PAN India delivery.">
+  <title>Luxury Home Lifts in Andhra Pradesh & Telangana | LEONI</title>
+  <meta name="description" content="Premium gearless MRL and hydraulic home lifts in Andhra Pradesh and Telangana. Explore LEONI packages, safety technology, interiors and a free site survey.">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18411596450"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'AW-18411596450');
+
+    function trackPhoneClick() {
+      try {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-18411596450/spxOCKKQxegecXELVq$tE',
+          'value': 1.0,
+          'currency': 'INR'
+        });
+      } catch (err) {
+        // A phone call must still work if tracking is unavailable.
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('a[href^="tel:"]').forEach(function (link) {
+        link.addEventListener('click', trackPhoneClick, { passive: true });
+      });
+    });
+  </script>
 
   <script>
     (function () {
@@ -45,14 +71,14 @@
     "@type": "LocalBusiness",
     "name": "LEONI Elevators",
     "image": "https://leonielevators.in/images/lux-elivator.webp",
-    "description": "Premium luxury home lifts, gearless elevators, and vertical transportation solutions.",
+    "description": "Premium luxury home lifts, gearless elevators, and vertical transportation solutions in Andhra Pradesh and Telangana.",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Hyderabad",
       "addressRegion": "Telangana",
       "addressCountry": "IN"
     },
-    "areaServed": ["Hyderabad", "Visakhapatnam", "Vijayawada", "Tirupati", "Warangal", "Guntur", "Telangana", "Andhra Pradesh"],
+    "areaServed": [{"@type": "State", "name": "Telangana"}, {"@type": "State", "name": "Andhra Pradesh"}],
     "telephone": "+91-7396894340",
     "email": "help@leonielevators.in",
     "url": "https://leonielevators.in",
@@ -101,6 +127,20 @@
     }
 
     .float-anim { animation: float 6s ease-in-out infinite; }
+    .finish-gallery { scrollbar-width: none; }
+    .finish-gallery::-webkit-scrollbar { display: none; }
+    .finish-viewer {
+      position: fixed; inset: 0; z-index: 400; display: flex; align-items: center; justify-content: center;
+      padding: 1.25rem; background: rgba(10, 8, 7, 0.94); opacity: 0; visibility: hidden; pointer-events: none;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+    }
+    .finish-viewer.open { opacity: 1; visibility: visible; pointer-events: auto; }
+    .finish-viewer-panel { position: relative; width: min(100%, 34rem); }
+    .finish-viewer img { width: 100%; max-height: 78vh; border-radius: 1.5rem; object-fit: contain; background: #16120f; }
+    .finish-viewer-close {
+      position: absolute; top: 0.75rem; right: 0.75rem; width: 2.75rem; height: 2.75rem; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.35); background: rgba(0,0,0,0.45); color: #fff; font-size: 1rem;
+    }
     @keyframes float {
       0%, 100% { transform: translateY(0px) rotate(0deg); }
       50% { transform: translateY(-15px) rotate(1deg); }
@@ -216,6 +256,7 @@
     @media (max-height: 720px) {
       .section-container { padding-top: 0.5rem; padding-bottom: 0.5rem; gap: 0.75rem; }
       .section-container img { max-height: 15vh; width: auto; object-fit: cover; }
+      .section-container .technology-motor { max-height: none; width: 100%; height: 100%; object-fit: contain; }
       /* Fixed-height media frames (h-[400px]) are the main reason floors 2 and 4
          ran past the fold on short phones — make them viewport-relative instead. */
       .section-container [class*="h-[400px]"] { height: 32vh !important; }
@@ -229,9 +270,14 @@
     /* Very short screens (360x600 and smaller budget Androids). */
     @media (max-height: 640px) {
       .section-container img { max-height: 12vh; }
+      .section-container .technology-motor { max-height: none; width: 100%; height: 100%; object-fit: contain; }
       .section-container [class*="h-[400px]"] { height: 26vh !important; }
       .section-container h3 { font-size: 1.35rem; }
       .section-container p { font-size: 0.85rem; line-height: 1.4; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
     }
   </style>
 </head>
@@ -240,6 +286,7 @@
   <!-- Preloader -->
   <div id="mobile-preloader">
     <img src="images/logo-center.webp" alt="LEONI Elevators logo" class="preloader-logo">
+    <p class="preloader-label">Preparing your private lift tour</p>
     <div class="preloader-bar">
       <div class="preloader-fill" id="preloader-fill"></div>
     </div>
@@ -248,7 +295,6 @@
   <!-- Floating CTA -->
   <div class="fixed right-4 bottom-4 z-[200] flex flex-col gap-3">
     <a href="https://wa.me/917396894340?text=Hi%20LEONI%20Elevators%2C%20I%20am%20coming%20from%20your%20website%20(Mobile%20home%20page)%20and%20would%20like%20a%20quote%20for%20a%20home%20lift." class="w-12 h-12 rounded-full bg-[#25D366] flex items-center justify-center text-white text-xl shadow-lg hover:scale-110 transition-transform" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
-    <a href="tel:+917396894340" class="w-12 h-12 rounded-full bg-[#9B1B30] flex items-center justify-center text-white text-lg shadow-lg hover:scale-110 transition-transform" aria-label="Call Us"><i class="fas fa-phone"></i></a>
   </div>
 
   <audio id="muzak-audio" loop preload="auto"><source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=bossa-nova-111023.mp3" type="audio/mpeg"></audio>
@@ -275,13 +321,15 @@
       <a href="index.html" class="flex items-center">
         <img id="nav-logo" src="images/logo.webp" alt="LEONI Elevators" class="h-8" style="opacity: 0;">
       </a>
+      <a id="nav-brochure" href="Leoni.pdf" class="inline-flex items-center gap-2 rounded-full bg-[#9B1B30] px-4 py-2 text-[10px] font-black uppercase tracking-wider text-white shadow-lg shadow-red-500/20 transition-transform hover:scale-105" style="opacity: 0;" aria-label="Download the LEONI brochure">
+        <i class="fas fa-download"></i><span>Brochure</span>
+      </a>
     </div>
   </nav>
 
   <div id="elevator-panel" class="fixed left-4 md:left-8 top-1/2 z-[120] border p-3 md:p-4 rounded-[2rem] backdrop-blur-xl flex flex-col gap-2 md:gap-3 shadow-lg">
     <div class="text-[9px] md:text-[10px] text-[#9B1B30] uppercase font-black tracking-widest text-center mb-1">Select</div>
-    <button class="floor-btn" onclick="goToFloor(6)" aria-label="Go to Penthouse">6</button>
-    <button class="floor-btn" onclick="goToFloor(5)" aria-label="Go to Regions">5</button>
+    <button class="floor-btn" onclick="goToFloor(5)" aria-label="Go to Service Area">5</button>
     <button class="floor-btn" onclick="goToFloor(4)" aria-label="Go to Cabins">4</button>
     <button class="floor-btn" onclick="goToFloor(3)" aria-label="Go to Sustainability">3</button>
     <button class="floor-btn" onclick="goToFloor(2)" aria-label="Go to Mechanism">2</button>
@@ -292,19 +340,26 @@
   <div id="lift-counter" class="fixed top-24 md:top-28 left-1/2 -translate-x-1/2 z-[110] opacity-0 pointer-events-none transition-opacity duration-300">
     <div class="led-display-container">
       <i id="dir-icon" class="fas fa-angle-double-up led-glow opacity-0"></i>
-      <div id="floor-display" class="led-number">0</div>
+      <div id="floor-display" class="led-number" aria-live="polite">0</div>
     </div>
   </div>
 
   <div id="elevator-shaft" class="relative h-screen w-full">
 
     <section id="f0" data-floor="0" class="active" aria-hidden="false">
-      <div class="parallax-bg absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518112166137-85f9979a43dd?q=80&w=2000')] bg-cover bg-center opacity-10 grayscale scale-[1.05]" role="img" aria-label="Luxury home lift interior"></div>
+      <div class="parallax-bg absolute inset-0 bg-[url('images/interior-titanium-gold.png')] bg-cover bg-center opacity-[0.09] grayscale scale-[1.05]" role="img" aria-label="Luxury home lift interior"></div>
       <div class="section-container relative z-10 text-center parallax-front">
-        <img id="floor0-logo" src="images/logo-white-bg.webp" alt="LEONI Elevators" class="w-64 md:w-96 mx-auto mb-6" style="opacity: 0;">
-        <div class="h-1 w-20 md:w-24 bg-[#9B1B30] mx-auto mb-4"></div>
-
-        <p class="mt-6 text-gray-500 max-w-xl mx-auto text-sm md:text-base hidden md:block">Transforming residential and commercial spaces across Telangana & Andhra Pradesh with world-class traction and hydraulic lift technology, built with BIS/ISI-marked and CE-marked components.</p>
+        <img id="floor0-logo" src="images/logo-white-bg.webp" alt="LEONI Elevators" class="mx-auto mb-4 w-52 md:w-80" style="opacity: 0;">
+        <p class="text-[9px] font-black tracking-[0.24em] text-[#9B1B30] uppercase">Private home lifts · Andhra Pradesh &amp; Telangana</p>
+        <h1 class="heading mt-3 text-4xl font-black leading-[0.98] text-gray-900 md:text-6xl">Your home,<br>elevated.</h1>
+        <p class="mx-auto mt-3 max-w-sm text-xs leading-relaxed text-gray-600 md:text-base">A design-led home lift for family comfort, graceful independence and a home that feels truly yours.</p>
+        <div class="mx-auto mt-5 grid max-w-sm grid-cols-3 gap-2 text-left">
+          <div class="rounded-xl border border-white/80 bg-white/80 p-2.5 shadow-sm backdrop-blur"><i class="fas fa-shield-heart mb-1 block text-sm text-[#9B1B30]"></i><span class="block text-[9px] font-black leading-tight text-gray-800">ARD Safety<br>Standard</span></div>
+          <div class="rounded-xl border border-white/80 bg-white/80 p-2.5 shadow-sm backdrop-blur"><i class="fas fa-gem mb-1 block text-sm text-[#9B1B30]"></i><span class="block text-[9px] font-black leading-tight text-gray-800">Bespoke Cabin<br>Finishes</span></div>
+          <div class="rounded-xl border border-white/80 bg-white/80 p-2.5 shadow-sm backdrop-blur"><i class="fas fa-ruler-combined mb-1 block text-sm text-[#9B1B30]"></i><span class="block text-[9px] font-black leading-tight text-gray-800">Free Site<br>Survey</span></div>
+        </div>
+        <a href="https://wa.me/917396894340?text=Hi%20LEONI%20Elevators%2C%20I%20would%20like%20to%20plan%20a%20home%20lift%20for%20my%20home." class="mt-5 inline-flex items-center gap-2 rounded-full bg-[#9B1B30] px-5 py-3 text-[10px] font-black uppercase tracking-wider text-white shadow-lg shadow-red-950/20 transition-transform hover:scale-105"><i class="fab fa-whatsapp text-sm"></i> Plan My Home Lift</a>
+        <p class="mt-2 text-[9px] font-semibold text-gray-500">Start your free consultation on WhatsApp</p>
       </div>
     </section>
 
@@ -328,15 +383,15 @@
       <div class="section-container grid md:grid-cols-2 gap-8 md:gap-12 items-center">
         <div class="relative flex justify-center parallax-img">
           <div class="w-64 md:w-72 h-[400px] md:h-[500px] border-4 border-[#9B1B30]/20 rounded-t-full relative overflow-hidden float-anim">
-             <img src="images/motor.webp" loading="lazy" class="h-full object-cover" alt="Gearless intelligent MRL transport mechanism">
+             <img src="images/motor.webp" loading="lazy" class="technology-motor h-full w-full object-contain object-center bg-black" alt="Gearless intelligent MRL transport mechanism">
           </div>
         </div>
         <div class="parallax-text">
           <h2 class="text-[#9B1B30] text-sm font-bold tracking-widest mb-2">GEARLESS TECHNOLOGY</h2>
           <h3 class="heading text-4xl md:text-6xl font-black mb-8 md:mb-10 leading-tight text-gray-900">Intelligent Transport</h3>
           <div class="flex flex-col gap-6">
-            <div class="flex gap-4 md:gap-6 items-center"><span class="text-3xl md:text-4xl font-black text-black/10">01</span><div><h4 class="font-bold text-base md:text-lg text-gray-900">Space-Saving MRL Design</h4><p class="text-gray-500 text-xs md:text-sm">Machine-room-less (MRL) options on our gearless line &mdash; perfect for luxury villas in Jubilee Hills or Vizag.</p></div></div>
-            <div class="flex gap-4 md:gap-6 items-center"><span class="text-3xl md:text-4xl font-black text-black/10">02</span><div><h4 class="font-bold text-base md:text-lg text-gray-900">Magnetic Drive</h4><p class="text-gray-500 text-xs md:text-sm">State-of-the-art PMSM gearless technology provides zero wear and whisper-quiet operation in residential spaces.</p></div></div>
+            <div class="flex gap-4 md:gap-6 items-center"><span class="text-3xl md:text-4xl font-black text-black/10">01</span><div><h4 class="font-bold text-base md:text-lg text-gray-900">Space-Saving MRL Design</h4><p class="text-gray-500 text-xs md:text-sm">Our gearless MRL options avoid a rooftop machine room &mdash; ideal for design-led villas and homes.</p></div></div>
+            <div class="flex gap-4 md:gap-6 items-center"><span class="text-3xl md:text-4xl font-black text-black/10">02</span><div><h4 class="font-bold text-base md:text-lg text-gray-900">Whisper-Quiet Magnetic Drive</h4><p class="text-gray-500 text-xs md:text-sm">PMSM gearless technology delivers smooth, quiet travel with low-maintenance operation.</p></div></div>
           </div>
         </div>
       </div>
@@ -344,91 +399,77 @@
 
     <section id="f3" data-floor="3" aria-hidden="true">
       <div class="section-container text-center">
-        <h2 class="text-[#9B1B30] text-sm font-bold tracking-[0.4em] mb-4 uppercase parallax-text">Royal Efficiency</h2>
-        <h3 class="heading text-4xl md:text-6xl font-black mb-10 parallax-text text-gray-900">Built for the Future</h3>
+        <h2 class="text-[#9B1B30] text-sm font-bold tracking-[0.4em] mb-4 uppercase parallax-text">The LEONI Collection</h2>
+        <h3 class="heading text-4xl md:text-6xl font-black mb-10 parallax-text text-gray-900">Choose Your LEONI</h3>
 
-        <div class="grid grid-cols-2 gap-4 parallax-img">
-          <div class="feature-card p-5 rounded-2xl text-left">
-            <i class="fas fa-wind text-2xl text-[#9B1B30] mb-3"></i>
-            <h4 class="font-bold text-sm mb-1 text-gray-900">Hydraulic Option</h4>
-            <p class="text-[10px] text-gray-500 leading-tight">Smooth, gentle hydraulic ride for low-rise homes.</p>
-          </div>
-          <div class="feature-card p-5 rounded-2xl text-left">
-            <i class="fas fa-leaf text-2xl text-[#9B1B30] mb-3"></i>
-            <h4 class="font-bold text-sm mb-1 text-gray-900">Eco-Friendly</h4>
-            <p class="text-[10px] text-gray-500 leading-tight">Efficient drives, low running costs.</p>
-          </div>
-          <div class="feature-card p-5 rounded-2xl text-left">
-            <i class="fas fa-bolt text-2xl text-[#9B1B30] mb-3"></i>
-            <h4 class="font-bold text-sm mb-1 text-gray-900">ARD Backup</h4>
-            <p class="text-[10px] text-gray-500 leading-tight">Safe descent in any power cut.</p>
-          </div>
-          <div class="feature-card p-5 rounded-2xl text-left">
-            <i class="fas fa-tools text-2xl text-[#9B1B30] mb-3"></i>
-            <h4 class="font-bold text-sm mb-1 text-gray-900">Managed Install</h4>
-            <p class="text-[10px] text-gray-500 leading-tight">Standard pit and civil work handled by us.</p>
-          </div>
+        <div class="grid grid-cols-2 gap-3 parallax-img text-left">
+          <article class="rounded-2xl border border-[#9B1B30]/20 bg-white p-4 shadow-sm">
+            <i class="fas fa-gem mb-3 text-xl text-[#9B1B30]"></i>
+            <p class="mb-1 text-[9px] font-black tracking-[0.13em] text-[#9B1B30]">ESSENTIAL PREMIUM</p>
+            <h4 class="mb-3 text-base font-black text-gray-900">Signature</h4>
+            <p class="text-lg font-black leading-none text-gray-900">&#8377;9,99,900 <span class="text-[10px] font-bold text-gray-500">+ GST</span></p>
+          </article>
+          <article class="rounded-2xl bg-[#9B1B30] p-4 text-white shadow-lg shadow-red-950/20">
+            <div class="mb-3 flex items-center justify-between"><i class="fas fa-star text-xl text-[#F4D7A1]"></i><span class="rounded-full bg-white/15 px-2 py-1 text-[8px] font-black tracking-wider">MOST CHOSEN</span></div>
+            <p class="mb-1 text-[9px] font-black tracking-[0.13em] text-[#F9DEB5]">ENHANCED PREMIUM</p>
+            <h4 class="mb-3 text-base font-black">Premium</h4>
+            <p class="text-lg font-black leading-none">&#8377;12,99,999 <span class="text-[10px] font-bold text-white/70">+ GST</span></p>
+          </article>
+          <article class="rounded-2xl bg-gray-950 p-4 text-white shadow-lg shadow-gray-950/20">
+            <i class="fas fa-crown mb-3 text-xl text-[#F4D7A1]"></i>
+            <p class="mb-1 text-[9px] font-black tracking-[0.13em] text-[#F9DEB5]">FLAGSHIP LUXURY</p>
+            <h4 class="mb-3 text-base font-black">Luxury</h4>
+            <p class="text-lg font-black leading-none">&#8377;15,99,999 <span class="text-[10px] font-bold text-white/70">+ GST</span></p>
+          </article>
+          <a href="compare.html" class="flex flex-col justify-between rounded-2xl border border-black/10 bg-[#F5F0EB] p-4 transition-colors hover:bg-[#eee4dc]">
+            <i class="fas fa-scale-balanced text-lg text-[#9B1B30]"></i>
+            <span class="text-sm font-black leading-tight text-gray-900">Compare every package <i class="fas fa-arrow-right ml-1 text-xs text-[#9B1B30]"></i></span>
+          </a>
         </div>
       </div>
     </section>
 
     <section id="f4" data-floor="4" aria-hidden="true">
-      <div class="section-container grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-        <div class="parallax-text">
-          <h2 class="text-[#9B1B30] text-sm font-bold tracking-widest mb-2">LUXURY INTERIORS</h2>
-          <h3 class="heading text-4xl md:text-6xl font-black mb-8 text-gray-900">Bespoke Aesthetics</h3>
-          <p class="text-gray-500 mb-8 text-sm md:text-lg">Match your home's architecture. Our 800mm clear-opening doors combined with designer cabins create a luxurious arrival experience.</p>
-          <div class="grid grid-cols-2 gap-3">
-             <div class="p-3 border border-black/10 rounded-xl hover:bg-[#F5F0EB] transition-colors"><h5 class="font-bold mb-1 text-xs text-gray-900">Titanium Gold</h5><p class="text-[10px] text-gray-500">Titanium Gold mirror finish.</p></div>
-             <div class="p-3 border border-black/10 rounded-xl hover:bg-[#F5F0EB] transition-colors"><h5 class="font-bold mb-1 text-xs text-gray-900">Classic Walnut</h5><p class="text-[10px] text-gray-500">Premium walnut veneer textures.</p></div>
-             <div class="p-3 border border-black/10 rounded-xl hover:bg-[#F5F0EB] transition-colors"><h5 class="font-bold mb-1 text-xs text-gray-900">Royal Marble</h5><p class="text-[10px] text-gray-500">Italian marble finish panels.</p></div>
-             <div class="p-3 border border-black/10 rounded-xl hover:bg-[#F5F0EB] transition-colors"><h5 class="font-bold mb-1 text-xs text-gray-900">Signature Glass</h5><p class="text-[10px] text-gray-500">Panoramic glass cabins.</p></div>
-          </div>
+      <div class="section-container">
+        <div class="mb-4 text-center parallax-text">
+          <h2 class="mb-2 text-sm font-bold tracking-widest text-[#9B1B30]">LUXURY INTERIORS</h2>
+          <h3 class="heading text-3xl font-black text-gray-900">Choose your cabin finish</h3>
+          <p class="mx-auto mt-2 max-w-md text-xs leading-relaxed text-gray-500">Swipe through the finishes in full detail.</p>
         </div>
-        <div class="grid grid-cols-2 gap-3 md:gap-4 float-anim parallax-img">
-          <img src="images/lux-elivator.webp" loading="lazy" class="rounded-2xl h-36 md:h-64 w-full object-cover" alt="Luxury residential elevator interior finish">
-          <img src="images/wood.webp" loading="lazy" class="rounded-2xl h-36 md:h-64 w-full object-cover mt-6" alt="LEONI Classic Walnut finish elevator cabin">
-          <img src="images/marble.webp" loading="lazy" class="rounded-2xl h-36 md:h-64 w-full object-cover" alt="LEONI Royal Marble finish elevator cabin">
-          <img src="images/glass.webp" loading="lazy" class="rounded-2xl h-36 md:h-64 w-full object-cover mt-6" alt="LEONI panoramic glass elevator cabin">
+        <div class="finish-gallery -mr-6 flex snap-x snap-mandatory gap-4 overflow-x-auto pr-6 pb-3 touch-pan-x float-anim parallax-img" aria-label="Luxury cabin finish gallery">
+          <figure class="w-[78vw] max-w-sm flex-none snap-center overflow-hidden rounded-3xl border border-black/10 bg-white shadow-lg"><button type="button" class="relative block w-full" onclick="openFinishViewer('images/interior-titanium-gold.png', 'Titanium Gold')" aria-label="View Titanium Gold cabin full screen"><img src="images/interior-titanium-gold.png" loading="lazy" class="h-64 w-full object-cover" alt="Titanium Gold elevator cabin"><span class="absolute bottom-3 right-3 flex h-9 w-9 items-center justify-center rounded-full bg-black/55 text-sm text-white backdrop-blur"><i class="fas fa-expand"></i></span></button><figcaption class="px-4 py-3 text-sm font-black text-gray-900">Titanium Gold</figcaption></figure>
+          <figure class="w-[78vw] max-w-sm flex-none snap-center overflow-hidden rounded-3xl border border-black/10 bg-white shadow-lg"><button type="button" class="relative block w-full" onclick="openFinishViewer('images/interior-rose-gold.png', 'Rose Gold')" aria-label="View Rose Gold cabin full screen"><img src="images/interior-rose-gold.png" loading="lazy" class="h-64 w-full object-cover" alt="Rose Gold elevator cabin"><span class="absolute bottom-3 right-3 flex h-9 w-9 items-center justify-center rounded-full bg-black/55 text-sm text-white backdrop-blur"><i class="fas fa-expand"></i></span></button><figcaption class="px-4 py-3 text-sm font-black text-gray-900">Rose Gold</figcaption></figure>
+          <figure class="w-[78vw] max-w-sm flex-none snap-center overflow-hidden rounded-3xl border border-black/10 bg-white shadow-lg"><button type="button" class="relative block w-full" onclick="openFinishViewer('images/interior-classic-walnut.png', 'Classic Walnut &amp; Bronze')" aria-label="View Classic Walnut and Bronze cabin full screen"><img src="images/interior-classic-walnut.png" loading="lazy" class="h-64 w-full object-cover" alt="Classic Walnut elevator cabin"><span class="absolute bottom-3 right-3 flex h-9 w-9 items-center justify-center rounded-full bg-black/55 text-sm text-white backdrop-blur"><i class="fas fa-expand"></i></span></button><figcaption class="px-4 py-3 text-sm font-black text-gray-900">Classic Walnut &amp; Bronze</figcaption></figure>
+          <figure class="w-[78vw] max-w-sm flex-none snap-center overflow-hidden rounded-3xl border border-black/10 bg-white shadow-lg"><button type="button" class="relative block w-full" onclick="openFinishViewer('images/interior-calacatta-glass.png', 'Calacatta Glass')" aria-label="View Calacatta Glass cabin full screen"><img src="images/interior-calacatta-glass.png" loading="lazy" class="h-64 w-full object-cover" alt="Calacatta glass elevator cabin"><span class="absolute bottom-3 right-3 flex h-9 w-9 items-center justify-center rounded-full bg-black/55 text-sm text-white backdrop-blur"><i class="fas fa-expand"></i></span></button><figcaption class="px-4 py-3 text-sm font-black text-gray-900">Calacatta Glass</figcaption></figure>
         </div>
       </div>
     </section>
 
     <section id="f5" data-floor="5" aria-hidden="true">
       <div class="section-container text-center parallax-text">
-        <h2 class="heading text-3xl md:text-5xl font-black mb-4 text-gray-900">Regional Presence</h2>
-        <p class="text-[#9B1B30] tracking-widest uppercase text-[10px] md:text-xs mb-10">Expert Elevator Installation & Maintenance Services</p>
-        <div class="flex flex-wrap justify-center gap-2 md:gap-3 max-w-3xl mx-auto">
-          <a href="blogs/hyderabad-luxury-lifts.html" class="px-4 py-2 md:px-6 md:py-3 bg-[#9B1B30] text-white border border-[#9B1B30] rounded-full text-xs md:text-sm font-bold shadow-lg shadow-red-500/20 hover:scale-105 transition-transform">Hyderabad HQ</a>
-          <a href="blogs/vizag-luxury-lifts.html" class="px-4 py-2 md:px-6 md:py-3 bg-[#F5F0EB] border border-black/10 rounded-full text-xs md:text-sm font-bold text-gray-700 hover:bg-[#EDE5DC] transition-colors">Visakhapatnam</a>
-          <span class="px-4 py-2 md:px-6 md:py-3 bg-[#F5F0EB] border border-black/10 rounded-full text-xs md:text-sm font-bold text-gray-700 hover:bg-[#EDE5DC] transition-colors">Vijayawada</span>
-          <span class="px-4 py-2 md:px-6 md:py-3 bg-[#F5F0EB] border border-black/10 rounded-full text-xs md:text-sm font-bold text-gray-700 hover:bg-[#EDE5DC] transition-colors">Tirupati</span>
-          <span class="px-4 py-2 md:px-6 md:py-3 bg-[#F5F0EB] border border-black/10 rounded-full text-xs md:text-sm font-bold text-gray-700 hover:bg-[#EDE5DC] transition-colors mt-2">Warangal</span>
-          <span class="px-4 py-2 md:px-6 md:py-3 bg-[#F5F0EB] border border-black/10 rounded-full text-xs md:text-sm font-bold text-gray-700 hover:bg-[#EDE5DC] transition-colors mt-2">Guntur</span>
-        </div>
-      </div>
-    </section>
-
-    <section id="f6" data-floor="6" aria-hidden="true">
-      <div class="section-container text-center relative z-10 parallax-front">
-        <div class="mb-6 inline-block bg-[#9B1B30] p-3 md:p-4 rounded-full"><i class="fas fa-crown text-white text-2xl md:text-3xl"></i></div>
-        <h2 class="heading text-4xl md:text-8xl font-black mb-6 text-gray-900">THE PENTHOUSE</h2>
-        <p class="text-base md:text-xl text-gray-500 mb-10 md:mb-12 max-w-2xl mx-auto">Luxury is not a feature, it's a standard. Get a customized quote for your property today.</p>
-        <div class="flex flex-col items-center gap-6">
-          <a href="https://wa.me/917396894340" class="inline-flex items-center gap-4 md:gap-6 bg-[#9B1B30] text-white px-8 py-4 md:px-12 md:py-6 rounded-2xl font-black text-xl md:text-2xl transition-all hover:scale-105 shadow-[0_20px_50px_rgba(155,27,48,0.3)]">
-            <i class="fab fa-whatsapp text-3xl md:text-4xl"></i> CHAT WITH US
-          </a>
-        </div>
+        <p class="text-[#9B1B30] tracking-[0.3em] uppercase text-[10px] md:text-xs mb-4">We are here</p>
+        <h2 class="heading text-4xl md:text-6xl font-black mb-5 text-gray-900">Andhra Pradesh<br>&amp; Telangana</h2>
+        <p class="mx-auto mb-8 max-w-md text-sm leading-relaxed text-gray-500 md:text-base">Book a free site survey for your home.</p>
+        <a href="https://wa.me/917396894340?text=Hi%20LEONI%20Elevators%2C%20I%20would%20like%20to%20book%20a%20free%20site%20survey%20for%20a%20home%20lift." class="inline-flex items-center gap-2 rounded-full bg-[#9B1B30] px-6 py-4 text-sm font-black uppercase tracking-wider text-white shadow-lg shadow-red-500/20 transition-transform hover:scale-105"><i class="fas fa-location-dot"></i> Book Free Site Survey</a>
       </div>
     </section>
 
   </div>
 
+  <div id="finish-viewer" class="finish-viewer" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Cabin finish image viewer" onclick="closeFinishViewer()">
+    <div class="finish-viewer-panel" onclick="event.stopPropagation()">
+      <button type="button" class="finish-viewer-close" onclick="closeFinishViewer()" aria-label="Close full-screen image"><i class="fas fa-xmark"></i></button>
+      <img id="finish-viewer-image" src="" alt="">
+      <p id="finish-viewer-title" class="mt-3 text-center text-sm font-black tracking-wide text-white"></p>
+    </div>
+  </div>
+
   <script>
     let currentFloor = 0;
-    const totalFloors = 6;
+    const totalFloors = 5;
     let isMoving = false;
     let audioUnlocked = false;
+    let soundEnabled = true;
     let appReady = false;
 
     // UI Elements
@@ -437,12 +478,35 @@
     const dirIcon = document.getElementById('dir-icon');
     const elevatorPanel = document.getElementById('elevator-panel');
     const scrollHint = document.getElementById('scroll-hint');
+    const finishViewer = document.getElementById('finish-viewer');
+    const finishViewerImage = document.getElementById('finish-viewer-image');
+    const finishViewerTitle = document.getElementById('finish-viewer-title');
 
     // Audio Elements
     const muzakAudio = document.getElementById('muzak-audio');
     const swooshAudio = document.getElementById('swoosh-audio');
     muzakAudio.volume = 0.3;
     swooshAudio.volume = 0.5;
+
+    function openFinishViewer(src, title) {
+      finishViewerImage.src = src;
+      finishViewerImage.alt = title + ' elevator cabin';
+      finishViewerTitle.textContent = title;
+      finishViewer.classList.add('open');
+      finishViewer.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeFinishViewer() {
+      finishViewer.classList.remove('open');
+      finishViewer.setAttribute('aria-hidden', 'true');
+    }
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) {
+        muzakAudio.pause();
+        swooshAudio.pause();
+      }
+    });
 
     // Shared AudioContext
     let audioCtx = null;
@@ -488,6 +552,7 @@
               onComplete: () => {
                 // After doors open on floor 0, fade in the center logo
                 gsap.to("#floor0-logo", { opacity: 1, duration: 1, ease: "power2.out" });
+                gsap.to("#nav-brochure", { opacity: 1, duration: 0.5, ease: "power2.out", delay: 0.35 });
               }
             });
           }, 300);
@@ -502,8 +567,8 @@
         img.src = src;
       });
 
-      // Fallback timeout
-      setTimeout(() => { if (!appReady) finishPreloader(); }, 5000);
+      // The lift doors should never hold visitors on the loading screen for long.
+      setTimeout(() => { if (!appReady) finishPreloader(); }, 2800);
     })();
 
     // Unlock audio — only click/touch/keydown count as user activation for autoplay
@@ -549,6 +614,7 @@
     }
 
     function playDing() {
+      if (!soundEnabled) return;
       try {
         if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         if (audioCtx.state === 'suspended') audioCtx.resume();
@@ -567,6 +633,7 @@
     }
 
     function safePlay(audio) {
+      if (!soundEnabled) return;
       try {
         // Ensure AudioContext is active before playing
         if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
@@ -614,14 +681,14 @@
             // Shaft lights sweep across doors
             gsap.fromTo(".shaft-light",
                { y: isGoingUp ? -100 : window.innerHeight + 100 },
-               { y: isGoingUp ? window.innerHeight + 100 : -100, duration: 0.6, repeat: 3, stagger: 0.2, ease: "none" }
+               { y: isGoingUp ? window.innerHeight + 100 : -100, duration: 0.34, repeat: 1, stagger: 0.12, ease: "none" }
             );
             // Vibrate the entire viewport (doors + content) for elevator feel
-            gsap.to("body", { y: isGoingUp ? -2 : 2, repeat: 8, yoyo: true, duration: 0.2, ease: "sine.inOut" });
+            gsap.to("body", { y: isGoingUp ? -2 : 2, repeat: 9, yoyo: true, duration: 0.09, ease: "sine.inOut" });
         })
 
         // Ride Time
-        .to({}, { duration: 2.0 })
+        .to({}, { duration: 0.9 })
 
         // 4. Stop — settle vibration, switch content
         .to("body", { y: 0, duration: 0.3, ease: "power2.out" })
@@ -681,6 +748,10 @@
     }, { passive: true });
 
     window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && finishViewer.classList.contains('open')) {
+        closeFinishViewer();
+        return;
+      }
       if (isMoving) return;
       if(e.key === 'ArrowDown' || e.key === 'PageDown') {
         e.preventDefault();
