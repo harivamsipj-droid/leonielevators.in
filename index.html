@@ -370,7 +370,18 @@
       box-shadow: 0 8px 25px rgba(155,27,48,0.35);
     }
     .quote-submit:hover { background: var(--red-dark); transform: translateY(-2px); }
+    .quote-submit:disabled { cursor: wait; opacity: 0.7; transform: none; }
     .quote-modal-note { font-size: 0.72rem; color: #9CA3AF; text-align: center; margin-top: 1rem; }
+    .quote-consent { display: flex; align-items: flex-start; gap: 0.65rem; margin: 0.25rem 0 1rem; }
+    .quote-consent input { width: 1rem; height: 1rem; margin-top: 0.15rem; accent-color: var(--red); flex: 0 0 auto; }
+    .quote-consent label { color: #6b7280; font-size: 0.72rem; line-height: 1.5; }
+    .quote-consent a { color: var(--red); font-weight: 700; }
+    .quote-consent-error { display: none; color: #dc2626; font-size: 0.68rem; margin: -0.6rem 0 0.8rem 1.65rem; }
+    .quote-consent.has-error + .quote-consent-error { display: block; }
+    .quote-submit-status { display: none; margin-top: 0.85rem; text-align: center; font-size: 0.75rem; line-height: 1.5; }
+    .quote-submit-status.is-visible { display: block; }
+    .quote-submit-status.is-success { color: #15803d; }
+    .quote-submit-status.is-error { color: #b91c1c; }
 
     .why-card {
       text-align: center; padding: 2.5rem 2rem;
@@ -957,6 +968,7 @@
 
         <form id="quote-form" novalidate>
           <input type="hidden" id="quote-package" name="package" value="">
+          <input type="text" id="quote-website" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden">
 
           <div class="quote-field" id="field-name">
             <label for="quote-name">Customer Name</label>
@@ -1006,8 +1018,15 @@
             <textarea id="quote-requirement" name="requirement" placeholder="Tell us about your elevator requirement&hellip;"></textarea>
           </div>
 
-          <button type="submit" class="quote-submit">Request My Quote</button>
-          <p class="quote-modal-note">Submitting sends your details straight to our team on WhatsApp.</p>
+          <div class="quote-consent" id="field-consent">
+            <input type="checkbox" id="quote-consent" required>
+            <label for="quote-consent">I agree that LEONI Elevators may contact me by phone, email and WhatsApp about this enquiry. See our <a href="privacy-policy.html">Privacy Policy</a>.</label>
+          </div>
+          <p class="quote-consent-error">Please agree before submitting your request.</p>
+
+          <button type="submit" class="quote-submit" id="quote-submit">Request My Quote</button>
+          <p class="quote-submit-status" id="quote-submit-status" role="status" aria-live="polite"></p>
+          <p class="quote-modal-note">Your request is shared with our team by email and WhatsApp.</p>
         </form>
       </div>
     </div>
@@ -1195,7 +1214,19 @@
       const closeBtn = document.getElementById('quote-modal-close');
       const form = document.getElementById('quote-form');
       const packageField = document.getElementById('quote-package');
+      const submitBtn = document.getElementById('quote-submit');
+      const submitStatus = document.getElementById('quote-submit-status');
+      const autoOpenInterval = 15000;
+      const submittedStorageKey = 'leoniQuoteSubmitted';
       let lastFocused = null;
+      let autoOpenTimer = null;
+      let quoteSubmitted = false;
+
+      try {
+        quoteSubmitted = localStorage.getItem(submittedStorageKey) === 'true';
+      } catch (err) {
+        quoteSubmitted = false;
+      }
 
       function openModal(packageName) {
         packageField.value = packageName || '';
@@ -1210,6 +1241,16 @@
         overlay.classList.remove('is-open');
         document.body.style.overflow = '';
         if (lastFocused) lastFocused.focus();
+      }
+
+      function scheduleAutoOpen() {
+        window.clearTimeout(autoOpenTimer);
+        if (quoteSubmitted) return;
+
+        autoOpenTimer = window.setTimeout(function () {
+          if (!overlay.classList.contains('is-open')) openModal('');
+          scheduleAutoOpen();
+        }, autoOpenInterval);
       }
 
       document.querySelectorAll('.js-open-quote-modal').forEach(function (btn) {
@@ -1252,10 +1293,14 @@
         setError('field-floors', !floors);
         if (!floors) valid = false;
 
+        const consent = document.getElementById('quote-consent').checked;
+        document.getElementById('field-consent').classList.toggle('has-error', !consent);
+        if (!consent) valid = false;
+
         return valid;
       }
 
-      form.addEventListener('submit', function (e) {
+      form.addEventListener('submit', async function (e) {
         e.preventDefault();
         if (!validate()) return;
 
@@ -1276,10 +1321,62 @@
         if (budget) message += 'Budget: ' + budget + '\n';
         if (requirement) message += 'Requirement: ' + requirement + '\n';
 
-        window.open('https://wa.me/917396894340?text=' + encodeURIComponent(message), '_blank');
-        closeModal();
-        form.reset();
+        const whatsappUrl = 'https://wa.me/917396894340?text=' + encodeURIComponent(message);
+        const whatsappWindow = window.open('about:blank', '_blank');
+        const emailPayload = {
+          _subject: 'New LEONI website lift enquiry from ' + name,
+          _template: 'table',
+          _honey: document.getElementById('quote-website').value,
+          source: 'LEONI website quote form',
+          name: name,
+          phone: phone,
+          email: email,
+          floors: floors,
+          package: pkg || 'Not selected',
+          budget: budget || 'Not selected',
+          requirement: requirement || 'Not provided'
+        };
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending Request...';
+        submitStatus.className = 'quote-submit-status';
+        submitStatus.textContent = '';
+
+        try {
+          const response = await fetch('https://formsubmit.co/ajax/help@leonielevators.in', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify(emailPayload)
+          });
+          const result = await response.json();
+          if (!response.ok || result.success === false) throw new Error('Email delivery failed');
+
+          quoteSubmitted = true;
+          window.clearTimeout(autoOpenTimer);
+          try { localStorage.setItem(submittedStorageKey, 'true'); } catch (err) {}
+
+          submitStatus.textContent = 'Thank you. Your request has been emailed to LEONI; please send the prepared WhatsApp message to complete your enquiry.';
+          submitStatus.className = 'quote-submit-status is-visible is-success';
+          if (whatsappWindow) whatsappWindow.location.href = whatsappUrl;
+          else window.location.href = whatsappUrl;
+
+          form.reset();
+          window.setTimeout(closeModal, 1800);
+        } catch (err) {
+          submitStatus.textContent = 'Email delivery could not be confirmed. Please send the prepared WhatsApp message so our team still receives your enquiry.';
+          submitStatus.className = 'quote-submit-status is-visible is-error';
+          if (whatsappWindow) whatsappWindow.location.href = whatsappUrl;
+          else window.location.href = whatsappUrl;
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Request My Quote';
+        }
       });
+
+      window.addEventListener('load', scheduleAutoOpen);
 
       // Auto-open when arriving from compare.html with ?package=...
       const params = new URLSearchParams(window.location.search);

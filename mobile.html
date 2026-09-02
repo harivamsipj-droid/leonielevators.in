@@ -276,6 +276,54 @@
       .section-container p { font-size: 0.85rem; line-height: 1.4; }
     }
 
+    /* Quote modal: sits above the lift simulator while preserving scroll inside the form. */
+    .mobile-quote-overlay {
+      position: fixed; inset: 0; z-index: 10000; display: none; align-items: center; justify-content: center;
+      padding: 0.85rem; background: rgba(10,10,10,0.7); backdrop-filter: blur(5px); touch-action: none;
+    }
+    .mobile-quote-overlay.is-open { display: flex; }
+    .mobile-quote-modal {
+      position: relative; width: 100%; max-width: 31rem; max-height: calc(100dvh - 1.7rem); overflow-y: auto;
+      border-radius: 1.25rem; background: #fff; padding: 1.5rem 1.15rem 1.25rem; color: #1a1a1a;
+      box-shadow: 0 28px 70px rgba(0,0,0,0.35); touch-action: pan-y; overscroll-behavior: contain;
+      animation: mobileQuoteIn 0.3s ease;
+    }
+    @keyframes mobileQuoteIn { from { opacity: 0; transform: translateY(14px) scale(0.98); } to { opacity: 1; transform: none; } }
+    .mobile-quote-close {
+      position: absolute; top: 0.85rem; right: 0.85rem; width: 2.3rem; height: 2.3rem; border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.1); background: #fff; color: #6b7280;
+    }
+    .mobile-quote-title { padding-right: 2.75rem; font-family: 'Playfair Display', serif; font-size: 1.65rem; line-height: 1.1; font-weight: 800; }
+    .mobile-quote-sub { margin: 0.45rem 0 1.15rem; color: #6b7280; font-size: 0.8rem; line-height: 1.5; }
+    .mobile-quote-field { margin-bottom: 0.8rem; }
+    .mobile-quote-field label { display: block; margin-bottom: 0.3rem; color: #4b5563; font-size: 0.65rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+    .mobile-quote-field input, .mobile-quote-field select, .mobile-quote-field textarea {
+      width: 100%; border: 1.5px solid rgba(0,0,0,0.12); border-radius: 0.65rem; background: #fafafa;
+      padding: 0.72rem 0.8rem; color: #1a1a1a; font-size: 0.85rem; touch-action: manipulation;
+    }
+    .mobile-quote-field textarea { min-height: 4.5rem; resize: vertical; }
+    .mobile-quote-field input:focus, .mobile-quote-field select:focus, .mobile-quote-field textarea:focus { outline: none; border-color: #9B1B30; background: #fff; }
+    .mobile-quote-error { display: none; margin-top: 0.25rem; color: #dc2626; font-size: 0.65rem; }
+    .mobile-quote-field.has-error input, .mobile-quote-field.has-error select { border-color: #dc2626; }
+    .mobile-quote-field.has-error .mobile-quote-error { display: block; }
+    .mobile-quote-consent { display: flex; align-items: flex-start; gap: 0.55rem; margin: 0.2rem 0 0.85rem; }
+    .mobile-quote-consent input { width: 1rem; height: 1rem; margin-top: 0.1rem; accent-color: #9B1B30; flex: 0 0 auto; }
+    .mobile-quote-consent label { color: #6b7280; font-size: 0.67rem; line-height: 1.45; }
+    .mobile-quote-consent a { color: #9B1B30; font-weight: 800; }
+    .mobile-quote-consent-error { display: none; margin: -0.5rem 0 0.75rem 1.55rem; color: #dc2626; font-size: 0.65rem; }
+    .mobile-quote-consent.has-error + .mobile-quote-consent-error { display: block; }
+    .mobile-quote-submit {
+      width: 100%; border: 0; border-radius: 999px; background: #9B1B30; padding: 0.9rem; color: #fff;
+      font-size: 0.75rem; font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase;
+      box-shadow: 0 8px 24px rgba(155,27,48,0.3);
+    }
+    .mobile-quote-submit:disabled { cursor: wait; opacity: 0.7; }
+    .mobile-quote-status { display: none; margin-top: 0.75rem; text-align: center; font-size: 0.68rem; line-height: 1.45; }
+    .mobile-quote-status.is-visible { display: block; }
+    .mobile-quote-status.is-success { color: #15803d; }
+    .mobile-quote-status.is-error { color: #b91c1c; }
+    .mobile-quote-note { margin-top: 0.7rem; color: #9ca3af; text-align: center; font-size: 0.63rem; }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
     }
@@ -358,8 +406,8 @@
           <div class="rounded-xl border border-white/80 bg-white/80 p-2.5 shadow-sm backdrop-blur"><i class="fas fa-gem mb-1 block text-sm text-[#9B1B30]"></i><span class="block text-[9px] font-black leading-tight text-gray-800">Bespoke Cabin<br>Finishes</span></div>
           <div class="rounded-xl border border-white/80 bg-white/80 p-2.5 shadow-sm backdrop-blur"><i class="fas fa-ruler-combined mb-1 block text-sm text-[#9B1B30]"></i><span class="block text-[9px] font-black leading-tight text-gray-800">Free Site<br>Survey</span></div>
         </div>
-        <a href="https://wa.me/917396894340?text=Hi%20LEONI%20Elevators%2C%20I%20would%20like%20to%20plan%20a%20home%20lift%20for%20my%20home." class="mt-5 inline-flex items-center gap-2 rounded-full bg-[#9B1B30] px-5 py-3 text-[10px] font-black uppercase tracking-wider text-white shadow-lg shadow-red-950/20 transition-transform hover:scale-105"><i class="fab fa-whatsapp text-sm"></i> Plan My Home Lift</a>
-        <p class="mt-2 text-[9px] font-semibold text-gray-500">Start your free consultation on WhatsApp</p>
+        <button type="button" class="js-open-mobile-quote mt-5 inline-flex items-center gap-2 rounded-full bg-[#9B1B30] px-5 py-3 text-[10px] font-black uppercase tracking-wider text-white shadow-lg shadow-red-950/20 transition-transform hover:scale-105"><i class="fas fa-clipboard-list text-sm"></i> Plan My Home Lift</button>
+        <p class="mt-2 text-[9px] font-semibold text-gray-500">Tell us about your home for a free consultation</p>
       </div>
     </section>
 
@@ -450,10 +498,81 @@
         <p class="text-[#9B1B30] tracking-[0.3em] uppercase text-[10px] md:text-xs mb-4">We are here</p>
         <h2 class="heading text-4xl md:text-6xl font-black mb-5 text-gray-900">Andhra Pradesh<br>&amp; Telangana</h2>
         <p class="mx-auto mb-8 max-w-md text-sm leading-relaxed text-gray-500 md:text-base">Book a free site survey for your home.</p>
-        <a href="https://wa.me/917396894340?text=Hi%20LEONI%20Elevators%2C%20I%20would%20like%20to%20book%20a%20free%20site%20survey%20for%20a%20home%20lift." class="inline-flex items-center gap-2 rounded-full bg-[#9B1B30] px-6 py-4 text-sm font-black uppercase tracking-wider text-white shadow-lg shadow-red-500/20 transition-transform hover:scale-105"><i class="fas fa-location-dot"></i> Book Free Site Survey</a>
+        <button type="button" class="js-open-mobile-quote inline-flex items-center gap-2 rounded-full bg-[#9B1B30] px-6 py-4 text-sm font-black uppercase tracking-wider text-white shadow-lg shadow-red-500/20 transition-transform hover:scale-105"><i class="fas fa-location-dot"></i> Book Free Site Survey</button>
       </div>
     </section>
 
+  </div>
+
+  <!-- Quote form: opens from mobile CTAs and automatically every 15 seconds until submitted. -->
+  <div id="mobile-quote-overlay" class="mobile-quote-overlay" aria-hidden="true">
+    <div class="mobile-quote-modal" role="dialog" aria-modal="true" aria-labelledby="mobile-quote-title">
+      <button type="button" id="mobile-quote-close" class="mobile-quote-close" aria-label="Close quote form"><i class="fas fa-xmark"></i></button>
+      <h2 id="mobile-quote-title" class="mobile-quote-title">Request Your Quote</h2>
+      <p class="mobile-quote-sub">Tell us a little about your home &mdash; our team will get back to you shortly.</p>
+
+      <form id="mobile-quote-form" novalidate>
+        <input type="text" id="mobile-quote-website" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden">
+
+        <div class="mobile-quote-field" id="mobile-field-name">
+          <label for="mobile-quote-name">Customer Name</label>
+          <input type="text" id="mobile-quote-name" name="name" autocomplete="name" required>
+          <span class="mobile-quote-error">Please enter your name.</span>
+        </div>
+
+        <div class="mobile-quote-field" id="mobile-field-phone">
+          <label for="mobile-quote-phone">Phone Number</label>
+          <input type="tel" id="mobile-quote-phone" name="phone" autocomplete="tel" inputmode="numeric" placeholder="10-digit mobile number" required>
+          <span class="mobile-quote-error">Please enter a valid 10-digit mobile number.</span>
+        </div>
+
+        <div class="mobile-quote-field" id="mobile-field-email">
+          <label for="mobile-quote-email">Email ID</label>
+          <input type="email" id="mobile-quote-email" name="email" autocomplete="email" inputmode="email" required>
+          <span class="mobile-quote-error">Please enter a valid email address.</span>
+        </div>
+
+        <div class="mobile-quote-field" id="mobile-field-floors">
+          <label for="mobile-quote-floors">Number of Floors</label>
+          <select id="mobile-quote-floors" name="floors" required>
+            <option value="" disabled selected>Select number of floors</option>
+            <option value="G+1">G+1</option>
+            <option value="G+2">G+2</option>
+            <option value="G+3">G+3</option>
+            <option value="G+4">G+4</option>
+            <option value="G+5">G+5</option>
+          </select>
+          <span class="mobile-quote-error">Please select the number of floors.</span>
+        </div>
+
+        <div class="mobile-quote-field">
+          <label for="mobile-quote-budget">Budget</label>
+          <select id="mobile-quote-budget" name="budget">
+            <option value="" disabled selected>Select an approximate budget</option>
+            <option value="Under 10 Lakhs">Under &#8377;10 Lakhs</option>
+            <option value="10-14 Lakhs">&#8377;10 &ndash; 14 Lakhs</option>
+            <option value="15-18 Lakhs">&#8377;15 &ndash; 18 Lakhs</option>
+            <option value="18 Lakhs+">&#8377;18 Lakhs+</option>
+            <option value="Not sure yet">Not sure yet</option>
+          </select>
+        </div>
+
+        <div class="mobile-quote-field">
+          <label for="mobile-quote-requirement">Requirement</label>
+          <textarea id="mobile-quote-requirement" name="requirement" placeholder="Tell us about your elevator requirement&hellip;"></textarea>
+        </div>
+
+        <div class="mobile-quote-consent" id="mobile-field-consent">
+          <input type="checkbox" id="mobile-quote-consent" required>
+          <label for="mobile-quote-consent">I agree that LEONI Elevators may contact me by phone, email and WhatsApp about this enquiry. See our <a href="privacy-policy.html">Privacy Policy</a>.</label>
+        </div>
+        <p class="mobile-quote-consent-error">Please agree before submitting your request.</p>
+
+        <button type="submit" id="mobile-quote-submit" class="mobile-quote-submit">Request My Quote</button>
+        <p id="mobile-quote-status" class="mobile-quote-status" role="status" aria-live="polite"></p>
+        <p class="mobile-quote-note">Your request is shared with our team by email and WhatsApp.</p>
+      </form>
+    </div>
   </div>
 
   <div id="finish-viewer" class="finish-viewer" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Cabin finish image viewer" onclick="closeFinishViewer()">
@@ -481,6 +600,7 @@
     const finishViewer = document.getElementById('finish-viewer');
     const finishViewerImage = document.getElementById('finish-viewer-image');
     const finishViewerTitle = document.getElementById('finish-viewer-title');
+    const mobileQuoteOverlay = document.getElementById('mobile-quote-overlay');
 
     // Audio Elements
     const muzakAudio = document.getElementById('muzak-audio');
@@ -500,6 +620,177 @@
       finishViewer.classList.remove('open');
       finishViewer.setAttribute('aria-hidden', 'true');
     }
+
+    function mobileQuoteIsOpen() {
+      return mobileQuoteOverlay.classList.contains('is-open');
+    }
+
+    // Mobile Quote Form
+    (function initMobileQuoteForm() {
+      const closeBtn = document.getElementById('mobile-quote-close');
+      const form = document.getElementById('mobile-quote-form');
+      const submitBtn = document.getElementById('mobile-quote-submit');
+      const submitStatus = document.getElementById('mobile-quote-status');
+      const autoOpenInterval = 15000;
+      const submittedStorageKey = 'leoniQuoteSubmitted';
+      let lastFocused = null;
+      let autoOpenTimer = null;
+      let quoteSubmitted = false;
+
+      try {
+        quoteSubmitted = localStorage.getItem(submittedStorageKey) === 'true';
+      } catch (err) {
+        quoteSubmitted = false;
+      }
+
+      function openQuoteModal() {
+        if (finishViewer.classList.contains('open')) closeFinishViewer();
+        lastFocused = document.activeElement;
+        mobileQuoteOverlay.classList.add('is-open');
+        mobileQuoteOverlay.setAttribute('aria-hidden', 'false');
+        window.setTimeout(function () {
+          const first = document.getElementById('mobile-quote-name');
+          if (first) first.focus();
+        }, 50);
+      }
+
+      function closeQuoteModal() {
+        mobileQuoteOverlay.classList.remove('is-open');
+        mobileQuoteOverlay.setAttribute('aria-hidden', 'true');
+        if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+      }
+
+      function scheduleAutoOpen() {
+        window.clearTimeout(autoOpenTimer);
+        if (quoteSubmitted) return;
+
+        autoOpenTimer = window.setTimeout(function () {
+          if (!mobileQuoteIsOpen()) openQuoteModal();
+          scheduleAutoOpen();
+        }, autoOpenInterval);
+      }
+
+      document.querySelectorAll('.js-open-mobile-quote').forEach(function (button) {
+        button.addEventListener('click', openQuoteModal);
+      });
+      closeBtn.addEventListener('click', closeQuoteModal);
+      mobileQuoteOverlay.addEventListener('click', function (event) {
+        if (event.target === mobileQuoteOverlay) closeQuoteModal();
+      });
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && mobileQuoteIsOpen()) {
+          event.preventDefault();
+          closeQuoteModal();
+        }
+      });
+
+      function setError(fieldId, show) {
+        const field = document.getElementById(fieldId);
+        if (field) field.classList.toggle('has-error', !!show);
+      }
+
+      function validateQuoteForm() {
+        let valid = true;
+        const name = document.getElementById('mobile-quote-name').value.trim();
+        const phone = document.getElementById('mobile-quote-phone').value.trim();
+        const email = document.getElementById('mobile-quote-email').value.trim();
+        const floors = document.getElementById('mobile-quote-floors').value;
+        const consent = document.getElementById('mobile-quote-consent').checked;
+
+        setError('mobile-field-name', !name);
+        if (!name) valid = false;
+
+        const phoneOk = /^[6-9]\d{9}$/.test(phone.replace(/[\s-]/g, ''));
+        setError('mobile-field-phone', !phoneOk);
+        if (!phoneOk) valid = false;
+
+        const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        setError('mobile-field-email', !emailOk);
+        if (!emailOk) valid = false;
+
+        setError('mobile-field-floors', !floors);
+        if (!floors) valid = false;
+
+        document.getElementById('mobile-field-consent').classList.toggle('has-error', !consent);
+        if (!consent) valid = false;
+        return valid;
+      }
+
+      form.addEventListener('submit', async function (event) {
+        event.preventDefault();
+        if (!validateQuoteForm()) return;
+
+        const name = document.getElementById('mobile-quote-name').value.trim();
+        const phone = document.getElementById('mobile-quote-phone').value.trim();
+        const email = document.getElementById('mobile-quote-email').value.trim();
+        const floors = document.getElementById('mobile-quote-floors').value;
+        const budget = document.getElementById('mobile-quote-budget').value;
+        const requirement = document.getElementById('mobile-quote-requirement').value.trim();
+
+        let message = 'Hi LEONI Elevators, I would like a quote.\n';
+        message += 'Name: ' + name + '\n';
+        message += 'Phone: ' + phone + '\n';
+        message += 'Email: ' + email + '\n';
+        message += 'Floors: ' + floors + '\n';
+        if (budget) message += 'Budget: ' + budget + '\n';
+        if (requirement) message += 'Requirement: ' + requirement + '\n';
+
+        const whatsappUrl = 'https://wa.me/917396894340?text=' + encodeURIComponent(message);
+        const whatsappWindow = window.open('about:blank', '_blank');
+        const emailPayload = {
+          _subject: 'New LEONI mobile website lift enquiry from ' + name,
+          _template: 'table',
+          _honey: document.getElementById('mobile-quote-website').value,
+          source: 'LEONI mobile lift simulator quote form',
+          name: name,
+          phone: phone,
+          email: email,
+          floors: floors,
+          budget: budget || 'Not selected',
+          requirement: requirement || 'Not provided'
+        };
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending Request...';
+        submitStatus.className = 'mobile-quote-status';
+        submitStatus.textContent = '';
+
+        try {
+          const response = await fetch('https://formsubmit.co/ajax/help@leonielevators.in', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify(emailPayload)
+          });
+          const result = await response.json();
+          if (!response.ok || result.success === false) throw new Error('Email delivery failed');
+
+          quoteSubmitted = true;
+          window.clearTimeout(autoOpenTimer);
+          try { localStorage.setItem(submittedStorageKey, 'true'); } catch (err) {}
+
+          submitStatus.textContent = 'Thank you. Your request has been emailed to LEONI; please send the prepared WhatsApp message to complete your enquiry.';
+          submitStatus.className = 'mobile-quote-status is-visible is-success';
+          if (whatsappWindow) whatsappWindow.location.href = whatsappUrl;
+          else window.location.href = whatsappUrl;
+
+          form.reset();
+          window.setTimeout(closeQuoteModal, 1800);
+        } catch (err) {
+          submitStatus.textContent = 'Email delivery could not be confirmed. Please send the prepared WhatsApp message so our team still receives your enquiry.';
+          submitStatus.className = 'mobile-quote-status is-visible is-error';
+          if (whatsappWindow) whatsappWindow.location.href = whatsappUrl;
+          else window.location.href = whatsappUrl;
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Request My Quote';
+        }
+      });
+
+      window.addEventListener('load', scheduleAutoOpen);
+    })();
 
     document.addEventListener('visibilitychange', function () {
       if (document.hidden) {
@@ -728,6 +1019,7 @@
 
     // Input Events
     window.addEventListener('wheel', (e) => {
+      if (mobileQuoteIsOpen()) return;
       if (isMoving) return;
       if (Math.abs(e.deltaY) > 30) {
         let nextFloor = currentFloor + (e.deltaY > 0 ? 1 : -1);
@@ -736,8 +1028,12 @@
     }, { passive: true });
 
     let touchStartY = 0;
-    window.addEventListener('touchstart', (e) => { touchStartY = e.touches[0].clientY; }, { passive: true });
+    window.addEventListener('touchstart', (e) => {
+      if (mobileQuoteIsOpen()) return;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
     window.addEventListener('touchend', (e) => {
+      if (mobileQuoteIsOpen()) return;
       if (isMoving) return;
       const touchEndY = e.changedTouches[0].clientY;
       const diff = touchStartY - touchEndY;
@@ -748,6 +1044,7 @@
     }, { passive: true });
 
     window.addEventListener('keydown', (e) => {
+      if (mobileQuoteIsOpen()) return;
       if (e.key === 'Escape' && finishViewer.classList.contains('open')) {
         closeFinishViewer();
         return;
